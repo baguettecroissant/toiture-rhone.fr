@@ -1,0 +1,123 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
+import config from '../data/config.json';
+
+const title = `Guide Toiture Zinc à Lyon & Rhône (69) | Règles de l'art DTU 40.41`;
+const description = `Découvrez comment choisir, poser et restaurer une toiture en zinc à joint debout sur les immeubles lyonnais selon le PLU et les normes ABF 2026.`;
+---
+
+<Layout title={title} description={description}>
+  <SchemaMarkup
+    slot="head"
+    pageUrl={Astro.url.href}
+    pageTitle={title}
+    pageDescription={description}
+    breadcrumbItems={[
+      { label: "Accueil", href: "/" },
+      { label: "Guide Toiture Zinc" }
+    ]}
+  />
+
+  <Breadcrumb items={[
+    { label: "Accueil", href: "/" },
+    { label: "Guide Toiture Zinc", href: "/guide-toiture-zinc/" }
+  ]} />
+
+  <section class="static-page-section" style="background-color: var(--bg);">
+    <div class="container">
+      <div class="two-column-layout">
+        
+        <!-- Main Content -->
+        <div class="static-main-content">
+          <h1>Guide Toiture Zinc &amp; Joint Debout dans le Rhône (69)</h1>
+          
+          <p class="lettrine">L</p>e zinc est le matériau emblématique des toitures des immeubles haussmanniens et canuts de la Presqu'île de Lyon et de la Croix-Rousse. Dans le Rhône (69), la réfection ou le remplacement d'un toit en zinc demande un savoir-faire artisanal pointu. Ce matériau noble garantit une étanchéité remarquable de plus de 50 ans, à condition de respecter les prescriptions du DTU 40.41 et les exigences patrimoniales des Architectes des Bâtiments de France (ABF) en zone sauvegardée UNESCO.
+
+          <h2>1. Le joint debout : la technique reine de la toiture zinc</h2>
+          <p>
+            Pour la pose de couverture zinc à Lyon et dans le 69, la technique du **joint debout** s'est imposée comme le standard incontournable :
+          </p>
+          <ul style="margin-left: 20px; display: flex; flex-direction: column; gap: 8px; margin-top: 10px; margin-bottom: 20px;">
+            <li><strong>Le principe :</strong> Les feuilles de zinc (appelées bandes ou bacs) sont assemblées longitudinalement par un double pliage mécanique de leurs rebords relevés. Ce joint continu d'une hauteur de 25mm empêche toute pénétration d'eau.</li>
+            <li><strong>Les avantages :</strong> C'est la solution idéale pour les toits à faible pente (dès 5% ou 3°) et les formes architecturales complexes. Les lignes de pliage confèrent un aspect graphique épuré et moderne à l'immeuble.</li>
+            <li><strong>La dilatation libre :</strong> Le zinc se dilate et se contracte selon les écarts de température (très marqués à Lyon entre été et hiver). Les bacs sont fixés au support en bois par des pattes de fixation en inox (fixes et coulissantes) dissimulées sous le pliage, permettant au métal de bouger librement.</li>
+          </ul>
+
+          <h2>2. Les règles de pose du DTU 40.41 et de ventilation</h2>
+          <p>
+            Le zinc est sensible à la condensation sous-face, qui provoque la corrosion blanche du métal. La pose selon le DTU 40.41 impose une ventilation rigoureuse :
+          </p>
+          <blockquote style="border-left: 4px solid var(--secondary); background-color: var(--primary-light); padding: 15px 20px; margin: 20px 0; border-radius: 0 8px 8px 0; font-style: italic;">
+            <p><strong>Le support ventilé :</strong> Le zinc doit être posé sur un support continu en bois brut (voliges ou liteaux en sapin ou chêne) non traité avec des produits acides. Une lame d'air ventilée de 20mm minimum doit être aménagée directement sous le voligeage pour évacuer la vapeur d'eau provenant de l'intérieur du bâtiment.</p>
+          </blockquote>
+
+          <h2>3. Les prescriptions ABF et PLU dans la métropole lyonnaise</h2>
+          <p>
+            À Lyon (Vieux-Lyon, Presqu'île, Croix-Rousse, Fourvière), l'utilisation du zinc est réglementée :
+            <br />
+            L'ABF exige l'utilisation exclusive de **zinc naturel** d'une épaisseur minimale de 0.65mm à 0.70mm. Le zinc prépatiné gris foncé ou ardoisé est parfois autorisé pour s'intégrer aux toits en ardoise environnants. Les éléments de zinguerie (gouttières havraises ou nantaises encastrées, dauphins de descente en fonte) doivent être soudés à l'étain de façon traditionnelle.
+          </p>
+
+          <h2>Tableau comparatif des matériaux de toiture à Lyon (69)</h2>
+          <div class="table-scroll-wrapper" style="border: 1px solid var(--border-color); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); margin: 25px 0;">
+            <table class="data-table" style="width: 100%; margin: 0;">
+              <thead>
+                <tr>
+                  <th>Matériau</th>
+                  <th>Spécification technique</th>
+                  <th>Durée de vie moyenne</th>
+                  <th>Usage conseillé / Quartier Lyon</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="font-weight: 600;">Zinc Naturel 0.70mm</td>
+                  <td style="font-weight: 700; color: var(--primary);">Joint debout sur voligeage ventilé</td>
+                  <td>50 – 80 ans</td>
+                  <td>Immeubles anciens haussmanniens et canuts (Presqu'île, Croix-Rousse)</td>
+                </tr>
+                <tr>
+                  <td style="font-weight: 600;">Ardoise Naturelle</td>
+                  <td>Pose au crochet inox sur liteaux</td>
+                  <td>60 – 100 ans</td>
+                  <td>Toitures à forte pente (Lyon 5e, Monts du Lyonnais, résidences bourgeoises)</td>
+                </tr>
+                <tr>
+                  <td style="font-weight: 600;">Tuile Mécanique / Canal</td>
+                  <td>Terre cuite ocre/rouge à emboîtement</td>
+                  <td>30 – 50 ans</td>
+                  <td>Villas pavillonnaires, maisons traditionnelles (Villefranche, Ouest Lyonnais)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="static-sidebar">
+          <div class="sidebar-widget bg-slate-gradient">
+            <h3>Demander des devis zinc</h3>
+            <p>
+              La réfection d'un toit en zinc à Lyon demande un artisan zingueur certifié. Comparez 3 chiffrages d'entreprises locales qualifiées RGE.
+            </p>
+            <a href="/devis/" class="sidebar-cta-tuile">Obtenir mes devis</a>
+          </div>
+
+          <div class="sidebar-widget" style="border-left: 4px solid var(--secondary);">
+            <h3>Menu Technique</h3>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 13.5px; padding: 0;">
+              <li><a href="/tarifs/">&rarr; Tarifs Toiture 2026</a></li>
+              <li><a href="/devis/">&rarr; Demande de Devis RGE</a></li>
+              <li><a href="/urgence-fuite/">&rarr; Dépannage fuite 24h</a></li>
+              <li><a href="/guides/prix-refection-toiture-lyon-2026-zinc-tuile-ardoise/">&rarr; Grille Budgets 69</a></li>
+              <li><a href="/communes/">&rarr; Couvreurs par Ville (69)</a></li>
+            </ul>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+</Layout>

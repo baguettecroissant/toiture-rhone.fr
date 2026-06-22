@@ -1,0 +1,64 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
+import config from '../data/config.json';
+
+const title = `Mentions Légales | ${config.brandName}`;
+const description = `Consultez les informations légales de l'éditeur du site et les conditions d'utilisation de toiture-rhone.fr.`;
+---
+
+<Layout title={title} description={description} robots="noindex, follow">
+  <SchemaMarkup
+    slot="head"
+    pageUrl={Astro.url.href}
+    pageTitle={title}
+    pageDescription={description}
+    breadcrumbItems={[
+      { label: "Accueil", href: "/" },
+      { label: "Mentions Légales" }
+    ]}
+  />
+
+  <Breadcrumb items={[
+    { label: "Accueil", href: "/" },
+    { label: "Mentions Légales", href: "/mentions-legales/" }
+  ]} />
+
+  <section class="static-page-section" style="background-color: var(--bg);">
+    <div class="container" style="max-width: 800px;">
+      <div class="static-main-content">
+        <h1>Mentions Légales</h1>
+        
+        <h2>1. Éditeur du Site</h2>
+        <p>
+          Le présent site, accessible à l'adresse <code>https://{config.domain}</code>, est édité par l'organisation <strong>baguettecroissant</strong>, spécialisée dans la publication de contenus thématiques et la génération de leads en affiliation pour le secteur de la rénovation de l'habitat.
+        </p>
+
+        <h2>2. Hébergement</h2>
+        <p>
+          Le site est hébergé sur l'infrastructure globale de :
+          <br />
+          <strong>Cloudflare, Inc.</strong>
+          <br />
+          101 Townsend St, San Francisco, CA 94107, USA.
+          <br />
+          Site internet : <code>https://www.cloudflare.com</code>
+        </p>
+
+        <h2>3. Propriété Intellectuelle</h2>
+        <p>
+          Tous les éléments composant le site (textes, graphismes, logos, codes sources, icônes) sont protégés par le droit d'auteur. Toute reproduction ou représentation, intégrale ou partielle, du site ou de l'un quelconque de ses composants, sans l'accord écrit préalable de l'organisation baguettecroissant, est interdite et constituerait une contrefaçon sanctionnée par les articles L. 335-2 et suivants du Code de la propriété intellectuelle.
+        </p>
+
+        <h2>4. Relation d'Affiliation &amp; Leads</h2>
+        <p>
+          <code>{config.domain}</code> fonctionne comme un site indépendant de comparaison d'artisans. Les demandes de devis complétées sur le site sont transmises en temps réel à notre partenaire technique <strong>ViteUnDevis</strong> (sous réserve de validation réglementaire de sécurité) afin de mettre en relation l'utilisateur avec des artisans qualifiés RGE du département du Rhône.
+        </p>
+        <p>
+          L'éditeur n'exerce aucun contrôle sur les négociations commerciales, la rédaction des devis, ni la réalisation physique des chantiers de réfection de toiture. La responsabilité de l'éditeur ne saurait être engagée quant à la qualité des travaux réalisés par les professionnels sélectionnés.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

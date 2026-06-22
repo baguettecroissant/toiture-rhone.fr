@@ -1,0 +1,407 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
+import config from '../data/config.json';
+import communes from '../data/communes.json';
+import { getCollection } from 'astro:content';
+
+const title = `Réfection de Toiture dans le Rhône (69) — Couvreurs RGE & Devis Gratuits`;
+const description = `Réfection de toiture en zinc à joint debout, ardoise ou tuile canal, isolation extérieure (sarking) et démoussage de toit dans le 69. Obtenez 3 devis gratuits.`;
+
+// Top communes for SEO linking (pop > 8000)
+const popularCommunes = communes.filter(c => c.population > 8000).slice(0, 15);
+
+// Fetch guides
+let recentGuides = [];
+try {
+  const guides = await getCollection('guides');
+  recentGuides = guides.slice(0, 3);
+} catch (e) {
+  console.log("No guides collection found yet", e);
+}
+---
+
+<Layout title={title} description={description}>
+  <SchemaMarkup
+    slot="head"
+    pageUrl={Astro.url.href}
+    pageTitle={title}
+    pageDescription={description}
+  />
+
+  <!-- Hero Section with lead form -->
+  <Hero />
+
+  <!-- Intro & Key Values Section -->
+  <section style="padding: 70px 0; background-color: var(--card-bg);">
+    <div class="container">
+      <div style="text-align: center; max-width: 800px; margin: 0 auto 50px;">
+        <h2 style="font-family: var(--font-heading); font-size: 34px; font-weight: 800; color: var(--primary); margin-bottom: 15px;">
+          Pourquoi faire rénover sa toiture par un professionnel certifié dans le Rhône ?
+        </h2>
+        <p style="font-size: 16.5px; color: var(--text-muted); line-height: 1.6;">
+          Le climat continental du Rhône soumet les toitures à des contraintes thermiques extrêmes : des hivers rigoureux avec risques de gelées sévères et de chutes de neige lourde (pesant sur les charpentes), suivis d'étés très chauds. Une couverture saine, étanche et parfaitement isolée est indispensable pour protéger votre habitation et réduire vos factures d'énergie.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+        <div style="background: var(--bg); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 30px; box-shadow: var(--shadow-md);">
+          <span style="font-size: 36px; display: block; margin-bottom: 15px;">❄️</span>
+          <h3 style="font-family: var(--font-heading); font-size: 19px; font-weight: 800; color: var(--primary); margin-bottom: 10px;">Résistance au Gel &amp; Neige</h3>
+          <p style="font-size: 14.5px; color: var(--text-muted); line-height: 1.5;">
+            Fixation conforme aux DTU : tuiles de montagne non gélives crochetées, écran de sous-toiture HPV robuste, et barrières pare-neige pour sécuriser la chute de blocs de glace.
+          </p>
+        </div>
+
+        <div style="background: var(--bg); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 30px; box-shadow: var(--shadow-md);">
+          <span style="font-size: 36px; display: block; margin-bottom: 15px;">🏢</span>
+          <h3 style="font-family: var(--font-heading); font-size: 19px; font-weight: 800; color: var(--primary); margin-bottom: 10px;">Zinc &amp; Joint Debout</h3>
+          <p style="font-size: 14.5px; color: var(--text-muted); line-height: 1.5;">
+            Savoir-faire artisanal spécifique pour les immeubles haussmanniens lyonnais et les toits des canuts de la Croix-Rousse, assurant une étanchéité en zinc de plus de 50 ans.
+          </p>
+        </div>
+
+        <div style="background: var(--bg); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 30px; box-shadow: var(--shadow-md);">
+          <span style="font-size: 36px; display: block; margin-bottom: 15px;">🌡️</span>
+          <h3 style="font-family: var(--font-heading); font-size: 19px; font-weight: 800; color: var(--primary); margin-bottom: 10px;">Isolation Sarking (CEE)</h3>
+          <p style="font-size: 14.5px; color: var(--text-muted); line-height: 1.5;">
+            Isolation extérieure de toiture ouvrant droit aux aides locales de la Métropole de Lyon (Éco-Rénov) et nationales, divisant par 3 les ponts thermiques de vos combles.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Simulator & Local Recommender -->
+  <section style="padding: 70px 0; background-color: var(--bg); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+    <div class="container">
+      <div style="text-align: center; max-width: 800px; margin: 0 auto 50px;">
+        <h2 style="font-family: var(--font-heading); font-size: 34px; font-weight: 800; color: var(--primary); margin-bottom: 15px;">
+          Estimateur de Budget &amp; Sélecteur de Toiture Rhodanien
+        </h2>
+        <p style="font-size: 16.5px; color: var(--text-muted); line-height: 1.6;">
+          Calculez le budget estimatif de vos travaux de couverture et d'isolation, et découvrez les recommandations de nos experts selon votre commune.
+        </p>
+      </div>
+
+      <div class="two-column-layout">
+        <!-- Budget Estimator -->
+        <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 30px; box-shadow: var(--shadow-md);">
+          <h3 style="font-family: var(--font-heading); font-size: 21px; font-weight: 800; color: var(--primary); margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
+            <span>🧮</span> 1. Estimateur de Budget
+          </h3>
+          
+          <div class="form-group">
+            <label for="sim_surface">Surface de la toiture (en m²)</label>
+            <input type="number" id="sim_surface" value="100" min="20" max="400" class="form-control" />
+          </div>
+
+          <div class="form-group">
+            <label for="sim_type">Type de couverture souhaité</label>
+            <select id="sim_type" class="form-control">
+              <option value="zinc">Toiture Zinc à joint debout (Lyon Presqu'île)</option>
+              <option value="meca">Tuiles mécaniques à emboîtement</option>
+              <option value="ardoise">Ardoise naturelle (Lyon 5e, Ouest Lyonnais)</option>
+              <option value="clean">Entretien simple (Démoussage + Hydrofuge)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="sim_state">État du toit et nature des travaux</label>
+            <select id="sim_state" class="form-control">
+              <option value="full">Réfection complète de couverture (dépose + repose)</option>
+              <option value="isolation">Réfection complète + Isolation par Sarking (éligible aides)</option>
+              <option value="repair">Réparations mineures (fuite, remplacement tuiles, raccords zinc)</option>
+              <option value="clean_only">Nettoyage &amp; Hydrofuge complet</option>
+            </select>
+          </div>
+
+          <div id="sim_result" style="background: var(--primary-light); border: 1.5px solid var(--secondary); border-radius: var(--radius-sm); padding: 18px; margin-top: 20px; text-align: center;">
+            <div style="font-size: 13px; color: var(--primary); text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">Estimation Moyenne</div>
+            <div id="sim_total_cost" style="font-size: 28px; font-weight: 900; color: var(--secondary); margin: 5px 0;">18 000 € TTC</div>
+            <p id="sim_aides_text" style="font-size: 13.5px; color: var(--text); margin: 0; font-weight: 500;">Aides éligibles estimées : <strong>0 €</strong></p>
+          </div>
+        </div>
+
+        <!-- Microclimate Recommender -->
+        <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 30px; box-shadow: var(--shadow-md); display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <h3 style="font-family: var(--font-heading); font-size: 21px; font-weight: 800; color: var(--primary); margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
+              <span>🧭</span> 2. Sélecteur de Toiture
+            </h3>
+            <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 20px;">
+              Obtenez des conseils spécifiques selon l'exposition climatique de votre maison ou copropriété dans le Rhône.
+            </p>
+
+            <div class="form-group">
+              <label for="filter_zone">Secteur géographique</label>
+              <select id="filter_zone" class="form-control">
+                <option value="lyon">Lyon / Villeurbanne (Toits zinc urbains, faible pente)</option>
+                <option value="beaujolais">Nord / Beaujolais (Tuiles canal terre cuite, pierres dorées)</option>
+                <option value="monts">Monts du Lyonnais (Altitude, fortes gelées et chutes de neige)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="filter_vent">Exposition aux intempéries</label>
+              <select id="filter_vent" class="form-control">
+                <option value="high">Forte exposition (Altitude, couloir Saône, toiture dégagée)</option>
+                <option value="moderate">Exposition modérée (Zone urbaine dense, quartier abrité)</option>
+              </select>
+            </div>
+
+            <div id="filter_result" style="background: var(--primary-light); border: 1.5px solid var(--primary); border-radius: var(--radius-sm); padding: 18px; margin-top: 20px;">
+              <div style="font-size: 12.5px; color: var(--primary); text-transform: uppercase; font-weight: 700; text-align: center;">Recommandation Technique</div>
+              <div id="filter_recom" style="font-size: 18px; font-weight: 900; color: var(--primary); text-align: center; margin: 5px 0;">Zinc à joint debout 0.70mm naturel</div>
+              <p id="filter_reason" style="font-size: 13px; color: var(--text); margin: 0; line-height: 1.4; text-align: center;">Standard historique lyonnais, optimal pour les faibles pentes en copropriété.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Table Section -->
+  <section style="padding: 70px 0; background-color: var(--card-bg);">
+    <div class="container" style="max-width: 900px;">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <h2 style="font-family: var(--font-heading); font-size: 30px; font-weight: 800; color: var(--primary); margin-bottom: 15px;">
+          Grille Tarifaire Indicative Toiture dans le Rhône (2026)
+        </h2>
+        <p style="font-size: 16px; color: var(--text-muted); max-width: 700px; margin: 0 auto;">
+          Prix moyens constatés pour la fourniture et pose par des artisans couvreurs qualifiés RGE dans le Rhône.
+        </p>
+      </div>
+
+      <div class="table-scroll-wrapper" style="border: 1px solid var(--border-color); border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
+        <table class="data-table" style="width: 100%; margin: 0;">
+          <thead>
+            <tr>
+              <th style="padding: 15px 20px;">Prestation / Travaux</th>
+              <th style="padding: 15px 20px;">Description technique</th>
+              <th style="padding: 15px 20px; text-align: right;">Prix moyen TTC</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding: 15px 20px; font-weight: 600;">Réfection toiture zinc joint debout</td>
+              <td style="padding: 15px 20px; color: var(--text-muted);">Dépose + pose zinc naturel 0.65mm + liteaux</td>
+              <td style="padding: 15px 20px; text-align: right; font-weight: 700; color: var(--primary); font-family: var(--font-mono);">150 – 220 € / m²</td>
+            </tr>
+            <tr>
+              <td style="padding: 15px 20px; font-weight: 600;">Réfection tuiles mécaniques</td>
+              <td style="padding: 15px 20px; color: var(--text-muted);">Dépose + écran HPV + repose tuiles neuves</td>
+              <td style="padding: 15px 20px; text-align: right; font-weight: 700; color: var(--primary); font-family: var(--font-mono);">100 – 160 € / m²</td>
+            </tr>
+            <tr>
+              <td style="padding: 15px 20px; font-weight: 600;">Réfection ardoise naturelle</td>
+              <td style="padding: 15px 20px; color: var(--text-muted);">Ardoise Espagne ou Angers posée au crochet</td>
+              <td style="padding: 15px 20px; text-align: right; font-weight: 700; color: var(--primary); font-family: var(--font-mono);">130 – 200 € / m²</td>
+            </tr>
+            <tr>
+              <td style="padding: 15px 20px; font-weight: 600;">Nettoyage &amp; Démoussage</td>
+              <td style="padding: 15px 20px; color: var(--text-muted);">Basse pression + algicide + hydrofuge protecteur</td>
+              <td style="padding: 15px 20px; text-align: right; font-weight: 700; color: var(--primary); font-family: var(--font-mono);">15 – 35 € / m²</td>
+            </tr>
+            <tr>
+              <td style="padding: 15px 20px; font-weight: 600;">Réparation fuite ponctuelle</td>
+              <td style="padding: 15px 20px; color: var(--text-muted);">Recherche de fuite + étanchéité solin / faîtage</td>
+              <td style="padding: 15px 20px; text-align: right; font-weight: 700; color: var(--primary); font-family: var(--font-mono);">350 – 1 200 €</td>
+            </tr>
+            <tr>
+              <td style="padding: 15px 20px; font-weight: 600;">Isolation Sarking (panneaux)</td>
+              <td style="padding: 15px 20px; color: var(--text-muted);">Panneaux polyuréthane rigides + pare-vapeur</td>
+              <td style="padding: 15px 20px; text-align: right; font-weight: 700; color: var(--primary); font-family: var(--font-mono);">90 – 170 € / m²</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size: 12px; color: var(--text-muted); margin-top: 15px; text-align: center;">
+        * Tarifs observés hors subventions publiques (TVA 5.5% et primes CEE applicables selon le profil fiscal).
+      </p>
+    </div>
+  </section>
+
+  <!-- Guides & Articles Section -->
+  {recentGuides.length > 0 && (
+    <section style="padding: 70px 0; background-color: var(--bg); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+      <div class="container">
+        <div style="text-align: center; max-width: 800px; margin: 0 auto 50px;">
+          <h2 style="font-family: var(--font-heading); font-size: 30px; font-weight: 800; color: var(--primary); margin-bottom: 15px;">
+            Guides &amp; Conseils Techniques Toiture
+          </h2>
+          <p style="font-size: 16.5px; color: var(--text-muted); line-height: 1.6;">
+            Consultez nos articles d'experts sur les spécificités des toitures dans le Rhône (zinc lyonnais, gelées d'altitude, réglementations et subventions).
+          </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+          {recentGuides.map((guide) => (
+            <article style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: var(--transition); border-radius: 8px;">
+              <div style="padding: 24px;">
+                <span style="font-size: 12px; font-weight: bold; color: var(--secondary); text-transform: uppercase; letter-spacing: 0.5px;">Dossier Technique 69</span>
+                <h3 style="font-family: var(--font-heading); font-size: 19px; font-weight: 800; color: var(--primary); margin: 8px 0 12px; line-height: 1.3;">
+                  {guide.data.title}
+                </h3>
+                <p style="font-size: 14px; color: var(--text-muted); line-height: 1.5; margin-bottom: 15px;">
+                  {guide.data.description}
+                </p>
+              </div>
+              <div style="padding: 18px 24px; border-top: 1px solid var(--primary-light); background: #fafafa; display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 13px; color: var(--text-muted);">Par {guide.data.author}</span>
+                <a href={`/guides/${guide.id}/`} style="font-weight: 700; font-size: 13.5px; color: var(--accent); text-decoration: none;">Lire l'article &rarr;</a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- pSEO Communes Link Hub -->
+  <section style="padding: 70px 0; background-color: var(--card-bg);">
+    <div class="container">
+      <div style="text-align: center; max-width: 800px; margin: 0 auto 40px;">
+        <h2 style="font-family: var(--font-heading); font-size: 30px; font-weight: 800; color: var(--primary); margin-bottom: 15px;">
+          📍 Couvreurs certifiés dans les principales communes du Rhône
+        </h2>
+        <p style="font-size: 16.5px; color: var(--text-muted); line-height: 1.6;">
+          Sélectionnez votre commune pour obtenir des devis personnalisés auprès de nos couvreurs partenaires certifiés RGE du 69 :
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 15px; margin-bottom: 40px;">
+        {popularCommunes.map((c) => (
+          <div style="border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 18px; background: var(--bg); transition: var(--transition); box-shadow: var(--shadow-sm); border-radius: 8px;">
+            <a href={`/travaux-toiture-${c.slug}/`} style="font-weight: 700; font-size: 15px; color: var(--primary); display: flex; justify-content: space-between; text-decoration: none;">
+              <span>{c.nom}</span>
+              <span>&rarr;</span>
+            </a>
+            <div style="display: flex; gap: 8px; margin-top: 10px; font-size: 11.5px;">
+              <a href={`/nettoyage-toiture-${c.slug}/`} style="color: var(--text-muted); text-decoration: none;" title={`Démoussage ${c.nom}`}>🧼 Nettoyage</a> ·
+              <a href={`/artisan-couvreur-${c.slug}/`} style="color: var(--text-muted); text-decoration: none;" title={`Couvreur RGE ${c.nom}`}>🛡️ Artisan RGE</a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div style="text-align: center;">
+        <a href="/communes/" style="font-weight: 700; font-size: 16px; color: var(--secondary); text-decoration: none; border-bottom: 2.5px solid var(--secondary); padding-bottom: 4px;">
+          📍 Consulter la liste complète des {communes.length} communes desservies &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script is:inline>
+  // Budget Simulator Script
+  const calculateBudget = () => {
+    const surfaceEl = document.getElementById('sim_surface');
+    const typeEl = document.getElementById('sim_type');
+    const stateEl = document.getElementById('sim_state');
+    
+    if (!surfaceEl || !typeEl || !stateEl) return;
+    
+    const surface = parseFloat(surfaceEl.value) || 100;
+    const type = typeEl.value;
+    const state = stateEl.value;
+    
+    let baseM2Price = 135;
+    let multiplier = 1.0;
+    let aides = 0;
+    
+    if (type === 'meca') {
+      baseM2Price = 115;
+    } else if (type === 'ardoise') {
+      baseM2Price = 160;
+    } else if (type === 'zinc') {
+      baseM2Price = 180;
+    } else if (type === 'clean') {
+      baseM2Price = 25;
+    }
+    
+    if (state === 'clean_only') {
+      baseM2Price = 25;
+    } else if (state === 'repair') {
+      baseM2Price = 0; // flat fee model below
+    } else if (state === 'isolation') {
+      baseM2Price += 120; // cost of insulation
+      aides = surface * 40; // base estimation of public grants
+    }
+    
+    let totalCost = 0;
+    if (state === 'repair') {
+      totalCost = 650; // default repair flat rate
+      aides = 0;
+    } else {
+      totalCost = surface * baseM2Price;
+    }
+    
+    document.getElementById('sim_total_cost').textContent = `${Math.round(totalCost).toLocaleString('fr-FR')} € TTC`;
+    document.getElementById('sim_aides_text').innerHTML = aides > 0 
+      ? `Aides éligibles estimées (MaPrimeRénov' + CEE) : <strong>~ ${Math.round(aides).toLocaleString('fr-FR')} €</strong>`
+      : `Aides éligibles : non applicable pour cette formule.`;
+  };
+
+  // Recommender Script
+  const calculateRecom = () => {
+    const zone = document.getElementById('filter_zone').value;
+    const vent = document.getElementById('filter_vent').value;
+    
+    let recom = "Couverture en tuiles mécaniques avec écran HPV";
+    let reason = "Standard robuste et étanche, parfaitement adapté au climat continental et aux gelées du Rhône.";
+    
+    if (zone === 'lyon') {
+      if (vent === 'high') {
+        recom = "Zinc à joint debout 0.70mm prépatiné";
+        reason = "Idéal pour les faibles pentes en zone urbaine exposée, assurant une étanchéité absolue et durable.";
+      } else {
+        recom = "Zinc à joint debout 0.65mm naturel";
+        reason = "Le standard des immeubles anciens lyonnais, approuvé par les ABF en zone historique.";
+      }
+    } else if (zone === 'beaujolais') {
+      if (vent === 'high') {
+        recom = "Tuiles canal ocre fixées sur PST (plaques sous tuiles)";
+        reason = "Excellente étanchéité face aux orages de grêle et esthétique pierres dorées préservée.";
+      } else {
+        recom = "Tuiles canal terre cuite crochetées";
+        reason = "La couverture traditionnelle du Beaujolais pour les maisons de vignerons.";
+      }
+    } else if (zone === 'monts') {
+      if (vent === 'high') {
+        recom = "Ardoises naturelles au crochet avec pare-neige";
+        reason = "Indispensable à forte altitude pour résister aux cycles gel/dégel et aux glissements de neige lourde.";
+      } else {
+        recom = "Tuiles de montagne non gélives clouées";
+        reason = "Sécurité renforcée contre le gel à un coût de pose optimisé.";
+      }
+    }
+    
+    document.getElementById('filter_recom').textContent = recom;
+    document.getElementById('filter_reason').textContent = reason;
+  };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const surfaceEl = document.getElementById('sim_surface');
+    const typeEl = document.getElementById('sim_type');
+    const stateEl = document.getElementById('sim_state');
+    
+    if (surfaceEl && typeEl && stateEl) {
+      surfaceEl.addEventListener('input', calculateBudget);
+      typeEl.addEventListener('change', calculateBudget);
+      stateEl.addEventListener('change', calculateBudget);
+      calculateBudget();
+    }
+    
+    const zoneEl = document.getElementById('filter_zone');
+    const ventEl = document.getElementById('filter_vent');
+    
+    if (zoneEl && ventEl) {
+      zoneEl.addEventListener('change', calculateRecom);
+      ventEl.addEventListener('change', calculateRecom);
+      calculateRecom();
+    }
+  });
+</script>

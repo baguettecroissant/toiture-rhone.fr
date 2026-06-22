@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StepsForm from '../components/StepsForm.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
+import config from '../data/config.json';
+
+const title = `Demande de Devis Toiture Rhône (69) | Gratuit & Sans Engagement`;
+const description = `Estimez vos subventions Éco-Rénov 2026 et obtenez 3 devis comparatifs gratuits d'artisans couvreurs certifiés RGE locaux dans le Rhône.`;
+---
+
+<Layout title={title} description={description}>
+  <SchemaMarkup
+    slot="head"
+    pageUrl={Astro.url.href}
+    pageTitle={title}
+    pageDescription={description}
+  />
+
+  <section class="static-page-section" style="background-color: var(--bg); padding: 50px 0;">
+    <div class="container" style="max-width: 750px;">
+      
+      <!-- Form at the top -->
+      <div style="background: white; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 35px 25px; box-shadow: var(--shadow-lg); margin-bottom: 50px;">
+        <h1 style="text-align: center; font-family: var(--font-heading); font-size: 28px; margin-bottom: 25px; color: var(--primary);">
+          Demande de Devis Rénovation Toiture &amp; Aides 2026
+        </h1>
+        <StepsForm />
+      </div>
+
+      <!-- Trust & SEO Content below -->
+      <div class="devis-info-content" style="color: var(--text); line-height: 1.7;">
+        <h2 style="font-family: var(--font-heading); color: var(--primary); font-size: 22px; margin-bottom: 15px;">Pourquoi effectuer votre demande de devis sur notre site ?</h2>
+        <p>
+          Rénover une toiture fatiguée ou remplacer vos anciens toits en zinc dégradés est l'étape essentielle pour protéger votre patrimoine des infiltrations d'eau lors des précipitations intenses et améliorer le confort thermique de vos combles dans le Rhône (69). Notre plateforme gratuite vous met en relation avec des couvreurs compagnons locaux qualifiés certifiés RGE. En complétant notre formulaire, vous bénéficiez de garanties sérieuses :
+        </p>
+        <ul style="margin-left: 20px; display: flex; flex-direction: column; gap: 8px; margin-top: 10px; margin-bottom: 20px;">
+          <li><strong>Entreprises Certifiées RGE dans le Rhône :</strong> Tous nos couvreurs partenaires possèdent la qualification <em>Reconnu Garant de l'Environnement</em> en cours de validité, obligatoire pour solliciter les subventions nationales MaPrimeRénov' 2026 pour l'isolation de votre toiture (par sarking) ou le dispositif métropolitain Éco-Rénov.</li>
+          <li><strong>Expertise climat rhodanien :</strong> Les couvreurs locaux maîtrisent les spécificités du froid hivernal, du gel et de la neige en altitude. Ils installent vos tuiles ou votre zinc selon le DTU 40.41, avec une étanchéité de noue/solin rigoureuse.</li>
+          <li><strong>Service 100% Gratuit &amp; Sans Engagement :</strong> Vous comparez jusqu'à 3 offres détaillées d'entreprises locales et restez totalement libre de choisir votre prestataire.</li>
+        </ul>
+
+        <h2 style="font-family: var(--font-heading); color: var(--primary); font-size: 22px; margin-top: 35px; margin-bottom: 15px;">Les 4 étapes de votre projet de toiture dans le 69</h2>
+        <ol style="margin-left: 20px; display: flex; flex-direction: column; gap: 15px;">
+          <li>
+            <strong>1. Formulaire rapide :</strong> Vous spécifiez votre projet (nature des travaux, type de toiture actuel, surface approximative et code postal dans le 69) en moins de 2 minutes.
+          </li>
+          <li>
+            <strong>2. Analyse technique du dossier :</strong> Notre équipe étudie votre projet pour sélectionner les 3 artisans couvreurs RGE du secteur (Lyon, Villeurbanne, Villefranche, Oullins, Bron, Caluire) les plus adaptés.
+          </li>
+          <li>
+            <strong>3. Visite technique sur site :</strong> Les artisans retenus réalisent une visite gratuite pour prendre les mesures exactes du toit et examiner l'état de la charpente en bois.
+          </li>
+          <li>
+            <strong>4. Comparaison des propositions :</strong> Vous recevez des devis détaillés fourniture et pose, avec le chiffrage précis de la réduction de facture énergétique et des subventions d'État déduites.
+          </li>
+        </ol>
+
+        <h2 style="font-family: var(--font-heading); color: var(--primary); font-size: 22px; margin-top: 35px; margin-bottom: 15px;">Comment bien comparer vos devis de toiture ?</h2>
+        <p>
+          Pour évaluer objectivement les propositions des entreprises de couverture du 69, vérifiez attentivement ces critères essentiels :
+        </p>
+        <ul style="margin-left: 20px; display: flex; flex-direction: column; gap: 8px; margin-top: 10px; margin-bottom: 20px;">
+          <li><strong>L'étanchéité de la zinguerie :</strong> Pour le zinc haussmannien ou l'évacuation pluviale (gouttières), assurez-vous que les soudures et les fixations respectent les prescriptions de la pose traditionnelle (soudure étain).</li>
+          <li><strong>La pose d'un écran sous-toiture :</strong> La pose d'un écran sous-toiture HPV (Hautement Perméable à la Vapeur) est fortement recommandée pour se prémunir des infiltrations de neige poudreuse lors des hivers rigoureux.</li>
+          <li><strong>Les garanties décennales :</strong> Le couvreur RGE doit obligatoirement joindre son attestation d'assurance décennale à jour couvrant l'activité de couverture-zinguerie dans le 69.</li>
+        </ul>
+      </div>
+
+      <div style="margin-top: 45px; padding: 30px; background: var(--card-bg); border-radius: var(--radius-md); border-left: 4px solid var(--secondary);">
+        <h3 style="font-family: var(--font-heading); color: var(--primary); margin-bottom: 15px;">📚 Ressources &amp; Guides utiles</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; font-size: 13.5px;">
+          <a href="/tarifs/" style="color: var(--text); text-decoration: none; padding: 10px 14px; background: rgba(28,25,23,0.04); border-radius: 8px; display: block;">&rarr; <strong>Tarifs Toiture 2026</strong> — Estimez vos coûts</a>
+          <a href="/guide-toiture-zinc/" style="color: var(--text); text-decoration: none; padding: 10px 14px; background: rgba(28,25,23,0.04); border-radius: 8px; display: block;">&rarr; <strong>Toiture zinc Lyon</strong> — Savoir-faire joint debout</a>
+          <a href="/urgence-fuite/" style="color: var(--text); text-decoration: none; padding: 10px 14px; background: rgba(28,25,23,0.04); border-radius: 8px; display: block;">&rarr; <strong>🚨 Urgence Fuite</strong> — Guide de dépannage 69</a>
+          <a href="/guides/prix-refection-toiture-lyon-2026-zinc-tuile-ardoise/" style="color: var(--text); text-decoration: none; padding: 10px 14px; background: rgba(28,25,23,0.04); border-radius: 8px; display: block;">&rarr; <strong>Dossier Budget Lyon</strong> — Prix par prestation</a>
+          <a href="/guides/neige-gel-proteger-toiture-hivers-rhodaniens/" style="color: var(--text); text-decoration: none; padding: 10px 14px; background: rgba(28,25,23,0.04); border-radius: 8px; display: block;">&rarr; <strong>Protéger face au gel</strong> — Précautions hiver</a>
+          <a href="/communes/" style="color: var(--text); text-decoration: none; padding: 10px 14px; background: rgba(28,25,23,0.04); border-radius: 8px; display: block;">&rarr; <strong>Nos couvreurs par Ville</strong> — Toutes les communes</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</Layout>

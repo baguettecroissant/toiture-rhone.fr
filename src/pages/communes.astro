@@ -1,0 +1,85 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
+import config from '../data/config.json';
+import communes from '../data/communes.json';
+
+const title = `Villes desservies dans le Rhône (69) | Devis Artisans Couvreurs RGE`;
+const description = `Retrouvez toutes les communes du Rhône (69) desservies par notre réseau d'artisans couvreurs RGE pour vos travaux de toiture, charpente et zinguerie.`;
+
+// Group communes by first letter
+const alphabetGroups = communes.reduce((acc, current) => {
+  const firstLetter = current.nom.charAt(0).toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  if (!acc[firstLetter]) {
+    acc[firstLetter] = [];
+  }
+  acc[firstLetter].push(current);
+  return acc;
+}, {} as Record<string, typeof communes>);
+
+const sortedLetters = Object.keys(alphabetGroups).sort();
+---
+
+<Layout title={title} description={description}>
+  <SchemaMarkup
+    slot="head"
+    pageUrl={Astro.url.href}
+    pageTitle={title}
+    pageDescription={description}
+    breadcrumbItems={[
+      { label: "Accueil", href: "/" },
+      { label: "Villes Rhône" }
+    ]}
+  />
+
+  <Breadcrumb items={[
+    { label: "Accueil", href: "/" },
+    { label: "Villes du Rhône (69)", href: "/communes/" }
+  ]} />
+
+  <section class="static-page-section" style="background-color: var(--bg);">
+    <div class="container" style="max-width: 1000px;">
+      <h1 style="font-family: var(--font-heading); font-size: 34px; font-weight: 900; color: var(--primary); margin-bottom: 20px; text-align: center;">
+        📍 Couvreurs &amp; Zingueurs RGE dans le Rhône (69)
+      </h1>
+      <p style="font-size: 16.5px; color: var(--text-muted); text-align: center; max-width: 800px; margin: 0 auto 50px; line-height: 1.6;">
+        Nos couvreurs qualifiés RGE interviennent sur l'ensemble du territoire du Rhône pour la réfection, le nettoyage, le démoussage et la zinguerie de votre toiture. Sélectionnez votre commune pour calculer vos subventions et estimer vos aides :
+      </p>
+
+      <!-- Alphabetic Quick Navigation -->
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 40px; background: white; border: 1px solid var(--border-color); padding: 15px; border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
+        {sortedLetters.map((letter) => (
+          <a href={`#letter-${letter}`} style="font-weight: 800; font-size: 15.5px; color: var(--primary); padding: 4px 8px; border-radius: var(--radius-sm); transition: var(--transition);">
+            {letter}
+          </a>
+        ))}
+      </div>
+
+      <!-- Communes Lists grouped by letter -->
+      <div style="display: flex; flex-direction: column; gap: 40px;">
+        {sortedLetters.map((letter) => (
+          <div id={`letter-${letter}`} style="background: white; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 30px; box-shadow: var(--shadow-sm);">
+            <h2 style="font-size: 26px; font-weight: 900; color: var(--secondary); border-bottom: 2px solid var(--primary-light); padding-bottom: 8px; margin-bottom: 20px;">
+              {letter}
+            </h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;">
+              {alphabetGroups[letter].map((c) => (
+                <div style="padding: 12px; border-radius: var(--radius-md); background: var(--bg); border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between; box-shadow: var(--shadow-sm);">
+                  <a href={`/travaux-toiture-${c.slug}/`} style="font-weight: 700; font-size: 15.0px; color: var(--primary); display: flex; justify-content: space-between; text-decoration: none;">
+                    <span>{c.nom} ({c.codePostal})</span>
+                    <span>&rarr;</span>
+                  </a>
+                  <div style="display: flex; gap: 8px; margin-top: 10px; font-size: 11.5px; color: var(--text-muted);">
+                    <a href={`/nettoyage-toiture-${c.slug}/`} style="color: var(--text-muted); text-decoration: none;" title={`Nettoyage & Démoussage ${c.nom}`}>🧼 Nettoyage</a> ·
+                    <a href={`/artisan-couvreur-${c.slug}/`} style="color: var(--text-muted); text-decoration: none;" title={`Couvreur RGE ${c.nom}`}>🛡️ Artisan RGE</a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

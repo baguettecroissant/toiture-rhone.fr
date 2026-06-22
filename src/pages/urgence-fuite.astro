@@ -1,0 +1,96 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
+import config from '../data/config.json';
+
+const title = `🚨 Urgence Fuite Toiture Rhône (69) | Bâchage & Mise hors d'eau 24h`;
+const description = `Fuite sur votre toit ? Nos couvreurs partenaires interviennent sous 24h pour le bâchage d'urgence, la recherche de fuites et les réparations de toiture dans le Rhône.`;
+---
+
+<Layout title={title} description={description}>
+  <SchemaMarkup
+    slot="head"
+    pageUrl={Astro.url.href}
+    pageTitle={title}
+    pageDescription={description}
+    breadcrumbItems={[
+      { label: "Accueil", href: "/" },
+      { label: "Urgence Fuite" }
+    ]}
+  />
+
+  <Breadcrumb items={[
+    { label: "Accueil", href: "/" },
+    { label: "🚨 Urgence Fuite & Infiltration", href: "/urgence-fuite/" }
+  ]} />
+
+  <section class="static-page-section" style="background-color: var(--bg);">
+    <div class="container">
+      <div class="two-column-layout">
+        
+        <!-- Main Content -->
+        <div class="static-main-content">
+          <h1>Urgence Fuite de Toiture dans le Rhône (69)</h1>
+          
+          <p class="lettrine">U</p>ne infiltration d'eau par le toit ne doit jamais être ignorée. Lors des précipitations intenses ou de la fonte rapide de la neige qui frappent régulièrement Lyon, Villeurbanne ou Villefranche-sur-Saône, l'eau s'infiltre par la moindre faiblesse de votre couverture. Si votre toiture présente une fuite (tuile cassée, solin de cheminée fissuré, faîtage déplacé, zinc endommagé), l'eau va saturer l'isolant de vos combles et endommager vos plafonds. Nos couvreurs partenaires interviennent sous 24 heures pour sécuriser votre habitat.
+
+          <h2>1. Les gestes d'urgence à réaliser immédiatement</h2>
+          <p>
+            En attendant l'arrivée du couvreur professionnel à votre domicile dans le 69 :
+          </p>
+          <ul style="margin-left: 20px; display: flex; flex-direction: column; gap: 8px; margin-top: 10px; margin-bottom: 20px;">
+            <li><strong>Coupez l'électricité :</strong> Si l'infiltration d'eau se produit à proximité de gaines électriques, de luminaires ou d'appareils de chauffage, coupez le disjoncteur de la zone concernée pour écarter tout risque de court-circuit.</li>
+            <li><strong>Protégez l'intérieur :</strong> Placez des seaux sous les gouttes d'eau et recouvrez vos meubles d'une bâche plastique.</li>
+            <li><strong>Prenez des photos :</strong> Photographiez la fuite, l'eau qui s'écoule et les dégâts visibles. Ces clichés seront indispensables pour votre dossier d'assurance habitation.</li>
+          </ul>
+
+          <h2>2. L'intervention d'urgence : Bâchage &amp; Mise hors d'eau</h2>
+          <p>
+            La priorité absolue lors d'une fuite active est de stopper l'entrée d'eau. Nos couvreurs réalisent une **mise hors d'eau rapide** :
+          </p>
+          <blockquote style="border-left: 4px solid var(--secondary); background-color: var(--primary-light); padding: 15px 20px; margin: 20px 0; border-radius: 0 8px 8px 0; font-style: italic;">
+            <p><strong>Le bâchage de sauvegarde :</strong> L'artisan pose une bâche de toiture renforcée et lestée sur la zone de fuite pour faire dévier l'eau vers les gouttières. Cette intervention rapide protège votre habitation en attendant la réparation définitive et est généralement remboursée par votre assurance.</p>
+          </blockquote>
+
+          <h2>3. Recherche de fuite de toit professionnelle</h2>
+          <p>
+            Parfois, l'origine de la fuite est invisible depuis l'extérieur (cheminement de l'eau le long des chevrons). Les artisans utilisent des méthodes modernes de recherche de fuite non destructive :
+          </p>
+          <ul style="margin-left: 20px; display: flex; flex-direction: column; gap: 8px; margin-top: 10px; margin-bottom: 20px;">
+            <li><strong>La thermographie infrarouge :</strong> Permet de détecter les variations de température dues à l'humidité dans l'isolant.</li>
+            <li><strong>Le test par fumigène ou colorant (fluorescéine) :</strong> Utilisé pour tracer précisément le parcours de l'eau sur les toits terrasses en zinc, les membranes EPDM ou les zingueries complexes.</li>
+          </ul>
+
+          <h2>4. Déclaration d'assurance habitation (sinistre intempéries)</h2>
+          <p>
+            Dans le Rhône, si la fuite fait suite à des intempéries (gel, grêle ou tempête), vous disposez de **5 jours ouvrés** pour envoyer votre déclaration de sinistre à votre compagnie d'assurance. Joignez-y le devis de réparation définitive établi par notre couvreur partenaire RGE du 69.
+          </p>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="static-sidebar">
+          <div class="sidebar-widget bg-slate-gradient">
+            <h3>Urgence Infiltration</h3>
+            <p>
+              Besoin d'une intervention rapide sous 24h pour un bâchage ou une réparation de fuite de toiture dans le 69 ?
+            </p>
+            <a href="/devis/" class="sidebar-cta-tuile">Demander une intervention</a>
+          </div>
+
+          <div class="sidebar-widget" style="border-left: 4px solid var(--secondary);">
+            <h3>Menu Technique</h3>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 13.5px; padding: 0;">
+              <li><a href="/tarifs/">&rarr; Tarifs Toiture 2026</a></li>
+              <li><a href="/devis/">&rarr; Demande de Devis RGE</a></li>
+              <li><a href="/guide-toiture-zinc/">&rarr; Guide Toiture Zinc</a></li>
+              <li><a href="/guides/prix-refection-toiture-lyon-2026-zinc-tuile-ardoise/">&rarr; Grille Budgets 69</a></li>
+              <li><a href="/communes/">&rarr; Couvreurs par Ville (69)</a></li>
+            </ul>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+</Layout>

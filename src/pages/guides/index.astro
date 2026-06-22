@@ -1,0 +1,105 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import SchemaMarkup from '../../components/SchemaMarkup.astro';
+import config from '../../data/config.json';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('guides');
+// Sort by date descending
+const sortedPosts = posts.sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
+
+const title = `Guides & Conseils Couverture & Toiture dans le Rhône (69) | R&R`;
+const description = `Découvrez tous nos guides techniques et pratiques pour la réfection de toiture, le traitement hydrofuge, les subventions Éco-Rénov 2026 et les spécificités du 69.`;
+---
+
+<Layout title={title} description={description}>
+  <SchemaMarkup
+    slot="head"
+    pageUrl={Astro.url.href}
+    pageTitle={title}
+    pageDescription={description}
+    breadcrumbItems={[
+      { label: "Accueil", href: "/" },
+      { label: "Guides Toiture" }
+    ]}
+  />
+
+  <Breadcrumb items={[
+    { label: "Accueil", href: "/" },
+    { label: "Guides Toiture Rhône", href: "/guides/" }
+  ]} />
+
+  <section class="static-page-section" style="background-color: var(--bg);">
+    <div class="container">
+      <div class="two-column-layout">
+        
+        <!-- Main Content -->
+        <div class="static-main-content">
+          <h1>Guides &amp; Conseils Techniques Toiture dans le 69</h1>
+          <p class="lead-text" style="font-size: 1.15rem; color: var(--text-muted); margin-bottom: 30px;">
+            Retrouvez les dossiers conseils de nos experts couvreurs du 69 pour réussir vos projets de couverture et de charpente. Réglementations locales ABF à Lyon, aides Éco-Rénov et ANAH pour isolation de toit, méthodes de démoussage et sécurité face au gel ou à la neige.
+          </p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-top: 20px;">
+            {sortedPosts.map((post) => (
+              <article class="card" style="display: flex; flex-direction: column; height: 100%; border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; background-color: var(--card-bg); transition: transform 0.2s, box-shadow 0.2s; box-shadow: var(--shadow-sm);">
+                {post.data.image && (
+                  <div style="width: 100%; height: 160px; overflow: hidden; background-color: var(--primary-light);">
+                    <img 
+                      src={post.data.image} 
+                      alt={post.data.title} 
+                      style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;"
+                      loading="lazy"
+                    />
+                  </div>
+                )}
+                <div style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column; gap: 10px;">
+                  <span style="font-family: var(--font-mono); font-size: 12px; color: var(--accent);">
+                    📅 {new Date(post.data.publishDate).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
+                  </span>
+                  <h3 style="font-size: 1.2rem; margin: 0; line-height: 1.35; color: var(--primary);">
+                    <a href={`/guides/${post.id}/`} style="text-decoration: none; color: inherit;">
+                      {post.data.title}
+                    </a>
+                  </h3>
+                  <p style="font-size: 14px; color: var(--text-muted); line-height: 1.45; margin: 0; flex-grow: 1;">
+                    {post.data.description}
+                  </p>
+                  <a 
+                    href={`/guides/${post.id}/`} 
+                    style="display: inline-block; align-self: flex-start; margin-top: 10px; font-weight: 600; color: var(--secondary); text-decoration: none; border-bottom: 2px solid transparent; transition: border-color 0.2s;"
+                  >
+                    Lire l'article &rarr;
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="static-sidebar">
+          <div class="sidebar-widget bg-slate-gradient">
+            <h3>Devis Couverture Gratuit</h3>
+            <p>
+              Comparez jusqu'à 3 offres d'artisans couvreurs basés dans le Rhône. Simulation gratuite sous 24h.
+            </p>
+            <a href="/devis/" class="sidebar-cta-tuile">Demander un Devis</a>
+          </div>
+
+          <div class="sidebar-widget" style="border-left: 4px solid var(--secondary);">
+            <h3>Dossiers Pratiques</h3>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 13.5px; padding: 0;">
+              <li><a href="/tarifs/">&rarr; Tarifs Toiture 2026</a></li>
+              <li><a href="/guide-toiture-zinc/">&rarr; Guide Toiture Zinc</a></li>
+              <li><a href="/urgence-fuite/">&rarr; Urgence Fuite &amp; Infiltration</a></li>
+              <li><a href="/communes/">&rarr; Toutes les Villes du 69</a></li>
+            </ul>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+</Layout>

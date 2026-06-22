@@ -1,0 +1,216 @@
+---
+import config from '../data/config.json';
+import '../styles/global.css';
+import communes from '../data/communes.json';
+import ExitIntentPopup from '../components/ExitIntentPopup.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalUrl?: string;
+  robots?: string;
+}
+
+const { 
+  title = `${config.brandName} | Réfection Toiture Rhône (69) — Artisans Couvreurs`, 
+  description = config.description,
+  canonicalUrl,
+  robots = 'index, follow'
+} = Astro.props;
+
+const siteUrl = `https://${config.domain}`;
+
+// Auto-generate canonical URL from current page
+let resolvedPathname = Astro.url.pathname;
+if (!resolvedPathname.endsWith('/')) {
+  resolvedPathname += '/';
+}
+const resolvedCanonical = canonicalUrl || `${siteUrl}${resolvedPathname}`;
+
+// Top 10 communes for footer popular list
+const topFooterCommunes = communes.slice(0, 10);
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content={robots} />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Favicon & PWA -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏗️</text></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={resolvedCanonical} />
+    <link rel="alternate" hreflang="fr" href={resolvedCanonical} />
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content={config.brandName} />
+    <meta property="og:url" content={resolvedCanonical} />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:image" content={`${siteUrl}/images/hero-toiture-rhone.png`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${siteUrl}/images/hero-toiture-rhone.png`} />
+
+    <!-- Geo meta tags for local SEO -->
+    <meta name="geo.region" content="FR-69" />
+    <meta name="geo.placename" content={config.mainCity} />
+
+    <!-- Schema.org JSON-LD slot -->
+    <slot name="head" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container header-inner">
+        <a href="/" class="logo">
+          <span>🏗️</span> {config.brandName}
+        </a>
+        <nav class="header-nav" aria-label="Navigation principale">
+          <a href="/">Accueil</a>
+          <a href="/tarifs/">🧮 Tarifs 2026</a>
+          <a href="/guide-toiture-zinc/">Toiture Zinc</a>
+          <a href="/urgence-fuite/">🚨 Fuite Urgence</a>
+          <a href="/communes/">Villes (69)</a>
+        </nav>
+        <div class="header-actions">
+          <a href="/devis/" class="contact-btn">
+            📋 Devis <span class="hide-mobile-text">Gratuit</span>
+          </a>
+          <button class="mobile-menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Slot -->
+    <main>
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container footer-grid-enriched">
+        <div class="footer-brand">
+          <h3>🏗️ {config.brandName}</h3>
+          <p style="margin-top: 10px;">Votre guide indépendant et technique pour comparer les couvreurs RGE et zingueurs dans le Rhône ({config.departmentCode}). Rénovation de toitures en zinc à joint debout d'immeubles haussmanniens lyonnais, toits plats de Confluence, isolation sarking et démoussage de toits face au gel et à la neige. Obtenez des devis gratuits sous 24h.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Villes populaires (69)</h4>
+          <ul style="margin-top: 10px; align-items: flex-start; list-style: none; padding: 0;">
+            {topFooterCommunes.map((c) => (
+              <li style="margin-bottom: 8px;">
+                <a href={`/travaux-toiture-${c.slug}/`} style="font-weight: 700;">{c.nom}</a>
+                <span style="font-size: 11.5px; color: #cbd5e1; margin-left: 4px;">
+                  (<a href={`/nettoyage-toiture-${c.slug}/`} style="color: #60a5fa; text-decoration: none;" title={`Démoussage ${c.nom}`}>nettoyage</a> · <a href={`/artisan-couvreur-${c.slug}/`} style="color: #60a5fa; text-decoration: none;" title={`Couvreur RGE ${c.nom}`}>RGE</a>)
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Pages Utiles</h4>
+          <ul style="margin-top: 10px; list-style: none; padding: 0;">
+            <li><a href="/tarifs/">Tarifs Toiture 2026</a></li>
+            <li><a href="/guide-toiture-zinc/">Guide Spécial Toiture Zinc</a></li>
+            <li><a href="/urgence-fuite/">Urgence Fuite &amp; Dépannage</a></li>
+            <li><a href="/devis/">Demande de Devis Gratuit</a></li>
+            <li><a href="/guides/">Dossiers Conseils</a></li>
+            <li><a href="/communes/">Toutes les Villes du 69</a></li>
+          </ul>
+          <h4 style="margin-top: 18px;">Dossiers Rénovation</h4>
+          <ul style="margin-top: 8px; list-style: none; padding: 0;">
+            <li><a href="/guides/prix-refection-toiture-lyon-2026-zinc-tuile-ardoise/">Budget Toiture 2026</a></li>
+            <li><a href="/guides/toiture-zinc-joint-debout-savoir-faire-immeubles-lyonnais/">Guide Toiture Zinc Lyon</a></li>
+            <li><a href="/guides/demoussage-toiture-rhone-quand-comment-prix/">Démoussage &amp; Entretien</a></li>
+            <li><a href="/guides/neige-gel-proteger-toiture-hivers-rhodaniens/">Protéger du gel et de la neige</a></li>
+            <li><a href="/guides/comment-choisir-couvreur-rhone-assurance-decennale-qualibat-devis/">Choisir un couvreur 69</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <p>&copy; {new Date().getFullYear()} {config.brandName}. Tous droits réservés.</p>
+        <p>
+          <a href="/mentions-legales/">Mentions Légales</a> | 
+          <a href="/politique-confidentialite/">Confidentialité (RGPD)</a>
+        </p>
+      </div>
+    </footer>
+
+    <!-- Exit Intent Popup -->
+    <ExitIntentPopup />
+
+    <script>
+      // Mobile menu toggle
+      const menuToggle = document.querySelector('.mobile-menu-toggle');
+      const headerNav = document.querySelector('.header-nav');
+      
+      if (menuToggle && headerNav) {
+        menuToggle.addEventListener('click', () => {
+          const isActive = menuToggle.classList.toggle('active');
+          headerNav.classList.toggle('active');
+          menuToggle.setAttribute('aria-expanded', String(isActive));
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+          const target = e.target as HTMLElement;
+          if (!menuToggle.contains(target) && !headerNav.contains(target)) {
+            menuToggle.classList.remove('active');
+            headerNav.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        headerNav.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            menuToggle.classList.remove('active');
+            headerNav.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
+      // Smooth scroll to devis form if present
+      document.querySelectorAll('a[href="/devis/"], a[href="#devis"], .contact-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const targetForm = document.getElementById('devis');
+          if (targetForm) {
+            e.preventDefault();
+            targetForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            targetForm.classList.add('pulse-form');
+            setTimeout(() => {
+              targetForm.classList.remove('pulse-form');
+            }, 3000);
+
+            const firstBox = targetForm.querySelector('.option-box') as HTMLElement;
+            if (firstBox) {
+              firstBox.focus();
+              firstBox.style.outline = '3px solid var(--secondary)';
+              setTimeout(() => {
+                if (firstBox) firstBox.style.outline = '';
+              }, 3000);
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

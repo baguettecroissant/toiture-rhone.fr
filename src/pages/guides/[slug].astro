@@ -1,0 +1,166 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import SchemaMarkup from '../../components/SchemaMarkup.astro';
+import config from '../../data/config.json';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('guides');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const title = `${post.data.title} | ${config.brandName}`;
+const description = post.data.description;
+---
+
+<Layout title={title} description={description}>
+  <SchemaMarkup
+    slot="head"
+    pageUrl={Astro.url.href}
+    pageTitle={title}
+    pageDescription={description}
+    breadcrumbItems={[
+      { label: "Accueil", href: "/" },
+      { label: "Guides", href: "/guides/" },
+      { label: post.data.title }
+    ]}
+  />
+
+  <Breadcrumb items={[
+    { label: "Accueil", href: "/" },
+    { label: "Guides", href: "/guides/" },
+    { label: post.data.title, href: `/guides/${post.id}/` }
+  ]} />
+
+  <section class="static-page-section" style="background-color: var(--bg);">
+    <div class="container">
+      <div class="two-column-layout">
+        
+        <!-- Main Content -->
+        <div class="static-main-content">
+          <article class="prose" style="display: flex; flex-direction: column; gap: 20px;">
+            <header style="margin-bottom: 20px; display: flex; flex-direction: column; gap: 10px;">
+              <span style="font-family: var(--font-mono); font-size: 13.5px; color: var(--accent); font-weight: 600;">
+                📅 Publié le {new Date(post.data.publishDate).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })} par {post.data.author || 'Le Maître Couvreur'}
+              </span>
+              <h1 style="margin: 0; font-size: 2.2rem; color: var(--primary); line-height: 1.25;">{post.data.title}</h1>
+            </header>
+
+            {post.data.image && (
+              <div style="border-radius: 8px; overflow: hidden; max-height: 380px; width: 100%; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); margin-bottom: 20px;">
+                <img 
+                  src={post.data.image} 
+                  alt={post.data.title} 
+                  style="width: 100%; height: 100%; object-fit: cover;"
+                />
+              </div>
+            )}
+
+            <div class="article-markdown-body" style="font-size: 16px; line-height: 1.7; color: var(--text); display: flex; flex-direction: column; gap: 15px;">
+              <Content />
+            </div>
+          </article>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="static-sidebar">
+          <div class="sidebar-widget bg-slate-gradient">
+            <h3>Besoin d'un couvreur dans le 69 ?</h3>
+            <p>
+              Faites chiffrer vos travaux de toiture ou de nettoyage. Recevez jusqu'à 3 devis comparatifs gratuits d'artisans couvreurs locaux certifiés RGE.
+            </p>
+            <a href="/devis/" class="sidebar-cta-tuile">Obtenir 3 Devis Gratuits</a>
+          </div>
+
+          <div class="sidebar-widget" style="border-left: 4px solid var(--secondary);">
+            <h3>Autres Guides Conseils</h3>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 13.5px; padding: 0;">
+              <li><a href="/guides/prix-refection-toiture-lyon-2026-zinc-tuile-ardoise/">&rarr; Budget Toiture 2026</a></li>
+              <li><a href="/guides/toiture-zinc-joint-debout-savoir-faire-immeubles-lyonnais/">&rarr; Guide Toiture Zinc</a></li>
+              <li><a href="/guides/demoussage-toiture-rhone-quand-comment-prix/">&rarr; Démoussage &amp; Nettoyage</a></li>
+              <li><a href="/guides/neige-gel-proteger-toiture-hivers-rhodaniens/">&rarr; Protéger face à la neige</a></li>
+              <li><a href="/guides/toiture-copropriete-lyon-syndic-vote-ag-couts/">&rarr; Toiture en Copropriété</a></li>
+              <li><a href="/guides/isolation-sous-toiture-sarking-guide-technique-combles-69/">&rarr; Sarking vs Rampants</a></li>
+              <li><a href="/guides/toiture-plate-lyon-confluence-gerland-epdm-pvc-bitume/">&rarr; Toiture plate à Lyon</a></li>
+              <li><a href="/guides/comment-choisir-couvreur-rhone-assurance-decennale-qualibat-devis/">&rarr; Trouver un Couvreur RGE</a></li>
+            </ul>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style is:global>
+  /* Custom prose overrides for Markdown content styling inside guides */
+  .article-markdown-body h2 {
+    font-size: 1.6rem;
+    color: var(--primary);
+    margin-top: 30px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 5px;
+  }
+  .article-markdown-body h3 {
+    font-size: 1.3rem;
+    color: var(--accent);
+    margin-top: 25px;
+    margin-bottom: 10px;
+  }
+  .article-markdown-body p {
+    margin-bottom: 15px;
+  }
+  .article-markdown-body ul, .article-markdown-body ol {
+    margin-left: 25px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .article-markdown-body li strong {
+    color: var(--primary);
+  }
+  .article-markdown-body blockquote {
+    border-left: 4px solid var(--secondary);
+    background-color: var(--primary-light);
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+  }
+  .article-markdown-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    box-shadow: var(--shadow-sm);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+  }
+  .article-markdown-body th {
+    background-color: var(--primary);
+    color: white;
+    font-weight: 600;
+    padding: 12px 15px;
+    text-align: left;
+  }
+  .article-markdown-body td {
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--card-bg);
+  }
+  .article-markdown-body tr:last-child td {
+    border-bottom: none;
+  }
+  .article-markdown-body table th, .article-markdown-body table td {
+    font-size: 14.5px;
+  }
+</style>

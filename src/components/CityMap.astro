@@ -1,0 +1,23 @@
+---
+interface Props {
+  cityName: string;
+  zip: string;
+  departmentName?: string;
+}
+
+const { cityName, zip, departmentName = "Rhône" } = Astro.props;
+const query = encodeURIComponent(`${cityName}, ${zip}, ${departmentName}, France`);
+---
+
+<div class="map-container" style="width: 100%; height: 350px; border-radius: var(--radius-md); overflow: hidden; border: 1.5px solid var(--border-color); background: var(--bg); margin: 25px 0;">
+  <iframe
+    title={`Carte de ${cityName}`}
+    src={`https://www.google.com/maps?q=${query}&output=embed&hl=fr`}
+    width="100%"
+    height="100%"
+    style="border: 0;"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+  />
+</div>

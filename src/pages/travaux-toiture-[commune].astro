@@ -1,0 +1,425 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import StepsForm from '../components/StepsForm.astro';
+import CityMap from '../components/CityMap.astro';
+import communes from '../data/communes.json';
+import { generateCommuneContent, getDynamicPrices } from '../lib/contentEngine';
+import { getSmartNearbyCommunes } from '../lib/geoLinks';
+
+export async function getStaticPaths() {
+  return communes.map((c) => ({
+    params: { commune: c.slug },
+    props: { commune: c },
+  }));
+}
+
+const { commune } = Astro.props;
+const pageType = 'refection';
+const local = generateCommuneContent(commune, pageType);
+const prices = getDynamicPrices(commune);
+const nearby = getSmartNearbyCommunes(commune.slug, communes, 5, 2);
+
+const title = `Travaux de Toiture à ${commune.nom} (${commune.codePostal}) — Artisan Couvreur Rhône`;
+const description = `${local.introParagraph} Devis gratuits de couvreurs-zingueurs RGE dans le Rhône. Tarifs de toiture adaptés à ${commune.nom}.`;
+
+const breadcrumbItems = [
+  { label: "Accueil", href: "/" },
+  { label: "Villes Rhône", href: "/communes/" },
+  { label: `Travaux Toiture ${commune.nom}` }
+];
+---
+
+<Layout title={title} description={description}>
+  <SchemaMarkup
+    slot="head"
+    pageUrl={Astro.url.href}
+    pageTitle={title}
+    pageDescription={description}
+    faqItems={local.faqItems}
+    breadcrumbItems={[
+      { label: "Accueil", href: "/" },
+      { label: "Villes Rhône", href: "/communes/" },
+      { label: `Travaux Toiture ${commune.nom}` }
+    ]}
+    communeName={commune.nom}
+  />
+
+  <Breadcrumb items={breadcrumbItems} />
+
+  <!-- Localized Hero Section -->
+  <section style="background: linear-gradient(135deg, rgba(127,29,29,0.06) 0%, rgba(71,85,105,0.03) 100%); padding: 50px 0; border-bottom: 1px solid var(--border-color);">
+    <div class="container">
+      <div class="two-column-layout">
+        <!-- Hero Text -->
+        <div style="display: flex; flex-direction: column; justify-content: center;">
+          <div style="background: rgba(127, 29, 29, 0.08); color: var(--primary); border: 1px solid rgba(127, 29, 29, 0.15); display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 30px; font-size: 12.5px; font-weight: 700; width: max-content; margin-bottom: 20px;">
+            <span>🏗️</span> Spécialiste Zinc &amp; Ardoise — Toiture {commune.nom}
+          </div>
+          <h1 style="font-family: var(--font-heading); font-size: 38px; font-weight: 900; color: var(--primary); line-height: 1.2; margin-bottom: 20px;">
+            Travaux de Toiture à <span style="color: var(--secondary);">{commune.nom}</span> ({commune.codePostal})
+          </h1>
+          <p style="font-size: 16.5px; line-height: 1.6; color: var(--text); margin-bottom: 25px;">
+            {local.introParagraph}
+          </p>
+          
+          <div style="background: white; border: 1.5px solid var(--border-color); border-left: 4px solid var(--primary); padding: 18px; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); margin-bottom: 25px; border-radius: 8px;">
+            <div style="font-weight: 800; color: var(--primary); margin-bottom: 5px; font-size: 14.5px;">💡 Note du Maître Couvreur :</div>
+            <p style="font-size: 13.5px; color: var(--text-muted); margin: 0; line-height: 1.5;">
+              {local.vitrageRecommendation}
+            </p>
+          </div>
+        </div>
+
+        <!-- Hero Form -->
+        <div style="background: white; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 30px 22px; box-shadow: var(--shadow-lg); border-radius: 8px;">
+          <h2 style="font-family: var(--font-heading); font-size: 22px; font-weight: 850; color: var(--primary); text-align: center; margin-bottom: 20px;">
+            Calculer mon budget &amp; Devis RGE
+          </h2>
+          <StepsForm initialZip={commune.codePostal} initialCommune={commune.nom} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Analysis Section -->
+  <section style="padding: 70px 0; background-color: var(--bg);">
+    <div class="container">
+      <div style="text-align: center; max-width: 800px; margin: 0 auto 50px;">
+        <h2 style="font-family: var(--font-heading); font-size: 32px; font-weight: 850; color: var(--primary); margin-bottom: 15px;">
+          Analyse Technique &amp; Spécificités Toiture à {commune.nom}
+        </h2>
+        <p style="font-size: 16px; color: var(--text-muted);">
+          Comprendre l'influence du climat rhodanien et du patrimoine lyonnais sur votre couverture.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+        <div style="background: white; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 25px; box-shadow: var(--shadow-sm); border-radius: 8px;">
+          <div style="font-size: 28px; margin-bottom: 12px;">❄️</div>
+          <h3 style="font-family: var(--font-heading); font-size: 18.5px; font-weight: 800; color: var(--primary); margin-bottom: 10px;">Contraintes climatiques &amp; Hiver</h3>
+          <p style="font-size: 14.0px; color: var(--text-muted); line-height: 1.6; margin: 0;">
+            {local.climateContext}
+          </p>
+        </div>
+
+        <div style="background: white; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 25px; box-shadow: var(--shadow-sm); border-radius: 8px;">
+          <div style="font-size: 28px; margin-bottom: 12px;">🏛️</div>
+          <h3 style="font-family: var(--font-heading); font-size: 18.5px; font-weight: 800; color: var(--primary); margin-bottom: 10px;">Réglementations &amp; Normes ABF</h3>
+          <p style="font-size: 14.0px; color: var(--text-muted); line-height: 1.6; margin: 0;">
+            {local.abfRegulations}
+          </p>
+        </div>
+
+        <div style="background: white; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 25px; box-shadow: var(--shadow-sm); border-radius: 8px;">
+          <div style="font-size: 28px; margin-bottom: 12px;">🏡</div>
+          <h3 style="font-family: var(--font-heading); font-size: 18.5px; font-weight: 800; color: var(--primary); margin-bottom: 10px;">Typologie de l'Habitat Local</h3>
+          <p style="font-size: 14.0px; color: var(--text-muted); line-height: 1.6; margin: 0;">
+            {local.housingTypologyInsight}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Profil Énergétique Section -->
+  <section style="padding: 70px 0; background-color: var(--card-bg); border-top: 1px solid var(--border-color);">
+    <div class="container" style="max-width: 900px;">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <h2 style="font-family: var(--font-heading); font-size: 30px; font-weight: 850; color: var(--primary); margin-bottom: 15px;">
+          Profil Toiture &amp; Transition Énergétique à {commune.nom} ({commune.codePostal})
+        </h2>
+        <p style="font-size: 16px; color: var(--text-muted);">
+          Diagnostic du parc immobilier ancien et valorisation de votre patrimoine.
+        </p>
+      </div>
+
+      <div style="background: white; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 30px; box-shadow: var(--shadow-sm); margin-bottom: 25px; border-radius: 8px;">
+        <div style="display: flex; align-items: flex-start; gap: 15px; margin-bottom: 20px;">
+          <span style="font-size: 32px;">🔥</span>
+          <div>
+            <h3 style="font-family: var(--font-heading); font-size: 18px; font-weight: 800; color: var(--primary); margin-bottom: 10px;">Bilan énergétique et de déperditions</h3>
+            <p style="font-size: 14.5px; color: var(--text-muted); line-height: 1.6; margin: 0;">
+              {local.energyProfileText}
+            </p>
+          </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 15px;">
+          <span style="font-size: 32px;">📈</span>
+          <div>
+            <h3 style="font-family: var(--font-heading); font-size: 18px; font-weight: 800; color: var(--primary); margin-bottom: 10px;">Valorisation immobilière par la rénovation</h3>
+            <p style="font-size: 14.5px; color: var(--text-muted); line-height: 1.6; margin: 0;">
+              {local.realEstateInsight}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Zoned local profile content -->
+      <div style="background: rgba(28,25,23,0.04); border: 1px solid rgba(28,25,23,0.1); border-radius: var(--radius-md); padding: 25px; border-radius: 8px;">
+        <h3 style="font-family: var(--font-heading); font-size: 18px; font-weight: 800; color: var(--primary); margin-bottom: 15px;">📍 Contexte géographique et territorial de {commune.nom}</h3>
+        {local.localProfileParagraph.split('\n\n').map((para: string) => (
+          <p style="font-size: 14.5px; color: var(--text); line-height: 1.7; margin-bottom: 15px;">{para}</p>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Dynamic Pricing Section -->
+  <section style="padding: 70px 0; background-color: var(--card-bg); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+    <div class="container" style="max-width: 900px;">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <h2 style="font-family: var(--font-heading); font-size: 30px; font-weight: 850; color: var(--primary); margin-bottom: 15px;">
+          Tarifs Moyens Pose Toiture à {commune.nom} (2026)
+        </h2>
+        <p style="font-size: 15.5px; color: var(--text-muted); max-width: 750px; margin: 0 auto; line-height: 1.6;">
+          {local.tableIntro}
+        </p>
+      </div>
+
+      <div class="table-scroll-wrapper" style="border: 1px solid var(--border-color); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); overflow-x: auto; background: white; border-radius: 8px;">
+        <table class="data-table" style="width: 100%; margin: 0; border-collapse: collapse; min-width: 600px;">
+          <thead>
+            <tr style="background-color: var(--primary-light);">
+              <th style="padding: 15px 20px; text-align: left; color: var(--primary); font-weight: 800;">Prestation / Travaux</th>
+              <th style="padding: 15px 20px; text-align: left; color: var(--primary); font-weight: 800;">Spécifications techniques</th>
+              <th style="padding: 15px 20px; text-align: right; color: var(--primary); font-weight: 800;">Budget Posé Estimé TTC</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--border-color);">
+              <td style="padding: 15px 20px; font-weight: 600;">Réfection toiture zinc joint debout</td>
+              <td style="padding: 15px 20px; color: var(--text-muted);">Zinc naturel 0.65mm posé à joint debout</td>
+              <td style="padding: 15px 20px; text-align: right; font-weight: 700; color: var(--primary); font-family: var(--font-mono);">{prices.refectionZinc.min} - {prices.refectionZinc.max} € / m²</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border-color);">
+              <td style="padding: 15px 20px; font-weight: 600;">Réfection tuiles mécaniques</td>
+              <td style="padding: 15px 20px; color: var(--text-muted);">Dépose + repose + écran sous-toiture HPV</td>
+              <td style="padding: 15px 20px; text-align: right; font-weight: 700; color: var(--primary); font-family: var(--font-mono);">{prices.refectionMeca.min} - {prices.refectionMeca.max} € / m²</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border-color);">
+              <td style="padding: 15px 20px; font-weight: 600;">Réfection ardoise naturelle</td>
+              <td style="padding: 15px 20px; color: var(--text-muted);">Ardoises Espagne/Angers posées au crochet</td>
+              <td style="padding: 15px 20px; text-align: right; font-weight: 700; color: var(--primary); font-family: var(--font-mono);">{prices.refectionArdoise.min} - {prices.refectionArdoise.max} € / m²</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border-color);">
+              <td style="padding: 15px 20px; font-weight: 600;">Nettoyage &amp; Démoussage complet</td>
+              <td style="padding: 15px 20px; color: var(--text-muted);">Nettoyage + algicide + traitement hydrofuge</td>
+              <td style="padding: 15px 20px; text-align: right; font-weight: 700; color: var(--primary); font-family: var(--font-mono);">{prices.demoussageHydro.min} - {prices.demoussageHydro.max} € / m²</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border-color);">
+              <td style="padding: 15px 20px; font-weight: 600;">Réparation fuite ponctuelle</td>
+              <td style="padding: 15px 20px; color: var(--text-muted);">Recherche de fuite + étanchéité de solins / tuiles</td>
+              <td style="padding: 15px 20px; text-align: right; font-weight: 700; color: var(--primary); font-family: var(--font-mono);">{prices.reparationFuite.min} - {prices.reparationFuite.max} €</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border-color);">
+              <td style="padding: 15px 20px; font-weight: 600;">Zinguerie (gouttières)</td>
+              <td style="padding: 15px 20px; color: var(--text-muted);">Zinc ou alu laqué posé complet</td>
+              <td style="padding: 15px 20px; text-align: right; font-weight: 700; color: var(--primary); font-family: var(--font-mono);">{prices.zinguerieMl.min} - {prices.zinguerieMl.max} € / ml</td>
+            </tr>
+            <tr>
+              <td style="padding: 15px 20px; font-weight: 600;">Isolation sous toiture (Sarking)</td>
+              <td style="padding: 15px 20px; color: var(--text-muted);">Panneaux isolants rigides + pare-vapeur</td>
+              <td style="padding: 15px 20px; text-align: right; font-weight: 700; color: var(--primary); font-family: var(--font-mono);">{prices.isolationSarking.min} - {prices.isolationSarking.max} € / m²</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size: 12px; color: var(--text-muted); margin-top: 15px; text-align: center;">
+        * Estimations moyennes TTC fourniture et pose comprises, basées sur les chantiers récents dans le secteur de {commune.nom}.
+      </p>
+
+      <div style="margin-top: 35px; background: rgba(28,25,23,0.06); border: 1.5px solid var(--secondary); border-radius: var(--radius-md); padding: 25px; text-align: center; border-radius: 8px;">
+        <span style="font-size: 24px; display: block; margin-bottom: 10px;">📉</span>
+        <h3 style="font-family: var(--font-heading); font-size: 18px; font-weight: 850; color: var(--secondary); margin-bottom: 5px;">Gains thermiques constatés :</h3>
+        <p style="font-size: 14.5px; color: var(--text); margin: 0; line-height: 1.5;">
+          {local.savingsEstimate} {local.diagnosticEnergetique}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step-by-Step Installation Process -->
+  <section style="padding: 70px 0; background-color: var(--bg);">
+    <div class="container" style="max-width: 900px;">
+      <div style="text-align: center; margin-bottom: 50px;">
+        <h2 style="font-family: var(--font-heading); font-size: 32px; font-weight: 850; color: var(--primary); margin-bottom: 15px;">
+          Déroulement des travaux de toiture à {commune.nom}
+        </h2>
+        <p style="font-size: 16px; color: var(--text-muted);">
+          Une pose méthodique et soignée respectant les normes DTU.
+        </p>
+      </div>
+
+      <!-- Timeline of steps -->
+      <div style="display: flex; flex-direction: column; gap: 30px; margin-bottom: 40px;">
+        {local.poseSteps.map((step, idx) => (
+          <div style="display: flex; gap: 20px; background: white; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 25px; box-shadow: var(--shadow-sm); border-radius: 8px;">
+            <div style="background: var(--primary); color: white; min-width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px; font-family: var(--font-heading);">
+              {idx + 1}
+            </div>
+            <div>
+              <h3 style="font-family: var(--font-heading); font-size: 18px; font-weight: 800; color: var(--primary); margin-bottom: 8px;">{step.title}</h3>
+              <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6; margin: 0;">{step.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div style="background: var(--primary-light); border: 1px dashed var(--primary); border-radius: var(--radius-md); padding: 22px; border-radius: 8px;">
+        <div style="font-weight: 800; color: var(--primary); margin-bottom: 5px; font-size: 14.5px;">⏳ Calendrier optimal de pose :</div>
+        <p style="font-size: 13.5px; color: var(--text); margin: 0; line-height: 1.5;">
+          {local.calendrierRenovation} <strong>Recommandation expert :</strong> {local.expertTip}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Subsidies and France Renov Details -->
+  <section style="padding: 70px 0; background-color: var(--card-bg); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+    <div class="container">
+      <div class="two-column-layout">
+        <!-- Text -->
+        <div style="display: flex; flex-direction: column; justify-content: center;">
+          <h2 style="font-family: var(--font-heading); font-size: 30px; font-weight: 850; color: var(--primary); margin-bottom: 20px;">
+            Aides nationales &amp; Accompagnement Local
+          </h2>
+          <p style="font-size: 15.5px; line-height: 1.6; color: var(--text); margin-bottom: 25px;">
+            {local.conseilAides}
+          </p>
+          <div style="background: white; border: 1.5px solid var(--border-color); border-radius: var(--radius-md); padding: 20px; box-shadow: var(--shadow-sm); border-radius: 8px;">
+            <h3 style="font-family: var(--font-heading); font-size: 17.5px; font-weight: 800; color: var(--secondary); margin-bottom: 8px;">
+              📍 Votre guichet Rénovation : {local.localAgencyName}
+            </h3>
+            <p style="font-size: 13.5px; color: var(--text-muted); margin: 0; line-height: 1.5;">
+              C'est {local.localAgencyDetail}. Les conseillers vous guident pour optimiser votre dossier de financement de toiture.
+            </p>
+          </div>
+        </div>
+
+        <!-- Local Map -->
+        <div>
+          <h3 style="font-family: var(--font-heading); font-size: 18.5px; font-weight: 800; color: var(--primary); margin-bottom: 15px; text-align: center;">
+            Secteur d'intervention à {commune.nom} ({commune.codePostal})
+          </h3>
+          <p style="font-size: 13.5px; color: var(--text-muted); text-align: center; margin-bottom: 15px;">
+            {local.marketDataText}
+          </p>
+          <CityMap cityName={commune.nom} zip={commune.codePostal} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Localized FAQ Section -->
+  <section style="padding: 70px 0; background-color: var(--bg);">
+    <div class="container" style="max-width: 800px;">
+      <h2 style="font-family: var(--font-heading); font-size: 32px; font-weight: 850; color: var(--primary); text-align: center; margin-bottom: 45px;">
+        Questions fréquentes sur les toitures à {commune.nom}
+      </h2>
+
+      <div style="display: flex; flex-direction: column; gap: 20px;">
+        {local.faqItems.map((faq) => (
+          <div style="background: white; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 25px; box-shadow: var(--shadow-sm); border-radius: 8px;">
+            <h3 style="font-family: var(--font-heading); font-size: 17.5px; font-weight: 800; color: var(--primary); margin: 0 0 10px;">
+              {faq.question}
+            </h3>
+            <p style="font-size: 14.5px; color: var(--text-muted); line-height: 1.6; margin: 0;">
+              {faq.answer}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Selected Guides Section -->
+  <section style="padding: 70px 0; background-color: var(--card-bg); border-top: 1px solid var(--border-color);">
+    <div class="container">
+      <h2 style="font-family: var(--font-heading); font-size: 28px; font-weight: 850; color: var(--primary); text-align: center; margin-bottom: 40px;">
+        📚 Dossiers techniques conseillés pour votre projet
+      </h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
+        {local.guideLinks.map((guide) => (
+          <div style="background: white; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 22px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: var(--shadow-sm); border-radius: 8px;">
+            <div>
+              <span style="font-size: 11px; font-weight: 800; color: var(--secondary); text-transform: uppercase;">Dossier Toiture (69)</span>
+              <h3 style="font-family: var(--font-heading); font-size: 17px; font-weight: 800; color: var(--primary); margin: 8px 0 10px; line-height: 1.3;">
+                {guide.label}
+              </h3>
+              <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.4; margin-bottom: 15px;">
+                {guide.desc}
+              </p>
+            </div>
+            <a href={guide.href} style="font-weight: 700; font-size: 13px; color: var(--accent); text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+              Lire le guide &rarr;
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Localized Internal Linking Hub -->
+  <section style="padding: 60px 0; background-color: var(--primary); color: white;">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+        
+        <!-- Alternate profiles for same city -->
+        <div>
+          <h3 style="font-family: var(--font-heading); font-weight: 800; font-size: 18.5px; color: white; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 8px;">
+            🔍 Alternatives &amp; Détails techniques à {commune.nom}
+          </h3>
+          <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px; font-size: 14.5px;">
+            <li>
+              <a href={`/nettoyage-toiture-${commune.slug}/`} style="color: rgba(255,255,255,0.85); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+                🧼 <strong>Nettoyage &amp; Démoussage à {commune.nom}</strong> — Traitement hydrofuge &rarr;
+              </a>
+            </li>
+            <li>
+              <a href={`/artisan-couvreur-${commune.slug}/`} style="color: rgba(255,255,255,0.85); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+                🛡️ <strong>Trouver un Couvreur RGE à {commune.nom}</strong> — Devis comparatifs &rarr;
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Proximity linking (Smart Nearby Communes) -->
+        <div>
+          <h3 style="font-family: var(--font-heading); font-weight: 800; font-size: 18.5px; color: white; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 8px;">
+            📍 Couvreurs RGE dans les communes voisines
+          </h3>
+          <p style="font-size: 13.5px; color: rgba(255,255,255,0.85); line-height: 1.45; margin-bottom: 15px; margin-top: 0;">
+            {local.smartNearbyCommunesText}
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 13px;">
+            {nearby.map((n) => (
+              <a 
+                href={`/travaux-toiture-${n.slug}/`} 
+                style="color: var(--primary); background-color: white; padding: 6px 12px; border-radius: 20px; text-decoration: none; font-weight: 700; transition: var(--transition);"
+                class="nearby-city-link"
+              >
+                {n.nom} ({n.codePostal})
+              </a>
+            ))}
+          </div>
+        </div>
+
+      </div>
+      
+      <div style="margin-top: 40px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; font-size: 13px; color: rgba(255,255,255,0.7);">
+        <p style="margin: 0;">{local.sourcesCitation}</p>
+        <p style="margin-top: 10px;"><a href="/communes/" style="color: white; text-decoration: underline;">Voir toutes les communes couvertes dans le Rhône (69)</a></p>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .nearby-city-link:hover {
+      background-color: var(--secondary) !important;
+      color: white !important;
+      transform: translateY(-2px);
+    }
+  </style>
+</Layout>

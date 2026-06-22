@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
+import config from '../data/config.json';
+
+const title = `Demande de devis reçue | ${config.brandName}`;
+const description = `Votre demande de devis toiture dans le Rhône (69) a bien été enregistrée et transmise à nos couvreurs partenaires RGE.`;
+---
+
+<Layout title={title} description={description} robots="noindex, nofollow">
+  <SchemaMarkup
+    slot="head"
+    pageUrl={Astro.url.href}
+    pageTitle={title}
+    pageDescription={description}
+  />
+
+  <section class="static-page-section" style="background-color: var(--bg); text-align: center; padding: 100px 0;">
+    <div class="container" style="max-width: 600px;">
+      <div style="background: white; border: 1.5px solid var(--border-color); border-radius: var(--radius-md); padding: 50px 40px; box-shadow: var(--shadow-lg);">
+        <div style="font-size: 64px; margin-bottom: 20px;">🎉</div>
+        
+        <h1 style="font-size: 28px; margin-bottom: 15px; color: var(--primary);">
+          Merci <span id="client-name"></span> !
+        </h1>
+        
+        <p style="font-size: 16.5px; color: var(--text); line-height: 1.6; margin-bottom: 30px;">
+          Votre demande de devis pour votre toiture à <strong id="project-city" style="color: var(--primary);">votre commune</strong> a bien été enregistrée sous la référence <strong id="devis-id" style="font-family: var(--font-mono); color: var(--secondary);">#------</strong>.
+        </p>
+
+        <div style="background: var(--primary-light); border-radius: var(--radius-md); padding: 20px; border-left: 4px solid var(--primary); text-align: left; margin-bottom: 35px;">
+          <h3 style="font-size: 16px; margin-bottom: 8px; color: var(--primary); font-weight: 700;">Prochaines étapes :</h3>
+          <ol style="margin-left: 20px; font-size: 14.5px; color: var(--text-muted); display: flex; flex-direction: column; gap: 8px; padding: 0;">
+            <li><strong>Validation par Téléphone :</strong> Un conseiller va prendre contact pour valider les caractéristiques techniques de votre projet.</li>
+            <li><strong>Sélection des couvreurs :</strong> Jusqu'à 3 couvreurs partenaires RGE locaux de votre secteur du 69 étudieront votre dossier.</li>
+            <li><strong>Chiffrages personnalisés :</strong> Vous recevez des propositions détaillées pour comparer sereinement et gratuitement.</li>
+          </ol>
+        </div>
+
+        <a href="/" class="contact-btn" style="text-decoration: none; display: inline-block;">
+          &larr; Retourner à l'accueil
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const devisId = params.get('devis_id') || '69' + Math.floor(Math.random() * 90000 + 10000);
+    const prenom = params.get('prenom') || 'Cher propriétaire';
+    const ville = params.get('ville') || "Rhône";
+
+    const nameEl = document.getElementById('client-name');
+    const cityEl = document.getElementById('project-city');
+    const devisEl = document.getElementById('devis-id');
+
+    if (nameEl) nameEl.textContent = prenom;
+    if (cityEl) cityEl.textContent = ville;
+    if (devisEl) devisEl.textContent = '#' + devisId;
+  });
+</script>

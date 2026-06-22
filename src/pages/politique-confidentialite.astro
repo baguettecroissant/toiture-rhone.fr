@@ -1,0 +1,73 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
+import config from '../data/config.json';
+
+const title = `Politique de Confidentialité | ${config.brandName}`;
+const description = `Consultez les conditions de traitement des données personnelles et d'application du RGPD sur toiture-rhone.fr.`;
+---
+
+<Layout title={title} description={description} robots="noindex, follow">
+  <SchemaMarkup
+    slot="head"
+    pageUrl={Astro.url.href}
+    pageTitle={title}
+    pageDescription={description}
+    breadcrumbItems={[
+      { label: "Accueil", href: "/" },
+      { label: "Confidentialité" }
+    ]}
+  />
+
+  <Breadcrumb items={[
+    { label: "Accueil", href: "/" },
+    { label: "Politique de Confidentialité", href: "/politique-confidentialite/" }
+  ]} />
+
+  <section class="static-page-section" style="background-color: var(--bg);">
+    <div class="container" style="max-width: 800px;">
+      <div class="static-main-content">
+        <h1>Politique de Confidentialité (RGPD)</h1>
+        
+        <p>
+          Chez <strong>{config.brandName}</strong>, nous accordons une importance fondamentale à la protection de la vie privée et à la sécurité des données personnelles de nos utilisateurs. Cette page détaille comment nous traitons vos données lors de l'utilisation de notre site conformément au Règlement Général sur la Protection des Données (RGPD).
+        </p>
+
+        <h2>1. Collecte des Données Personnelles</h2>
+        <p>
+          Lors de l'utilisation de notre formulaire de demande de devis, nous collectons les informations suivantes :
+        </p>
+        <ul style="margin-left: 20px; display: flex; flex-direction: column; gap: 8px; margin-top: 10px; margin-bottom: 20px;">
+          <li><strong>Identité :</strong> Prénom, Nom.</li>
+          <li><strong>Coordonnées :</strong> Adresse email, Numéro de téléphone portable (pour validation).</li>
+          <li><strong>Localisation :</strong> Adresse du chantier, Code postal, Ville (Rhône).</li>
+          <li><strong>Projet :</strong> Nature des travaux (réfection, démoussage, etc.), type de couverture actuel, surface estimative du toit, délai et situation d'occupation.</li>
+        </ul>
+
+        <h2>2. Finalité du Traitement</h2>
+        <p>
+          Ces données sont collectées dans l'unique but de traiter votre demande de devis et de vous mettre en relation avec jusqu'à 3 couvreurs ou zingueurs certifiés RGE proches de votre chantier dans le Rhône (69).
+        </p>
+        <p>
+          Les informations de contact sont vérifiées par notre équipe ou notre partenaire afin de garantir la pertinence de la mise en relation pour les professionnels de notre réseau.
+        </p>
+
+        <h2>3. Destinataires des Données</h2>
+        <p>
+          Vos données sont transmises de manière sécurisée (protocole HTTPS) à notre partenaire technique <strong>ViteUnDevis</strong>, qui distribue la demande aux entreprises de couverture locales agréées du 69. Aucune donnée n'est vendue, louée ou distribuée à d'autres tiers non mentionnés à des fins de prospection publicitaire.
+        </p>
+
+        <h2>4. Durée de Conservation</h2>
+        <p>
+          Les données personnelles collectées via notre formulaire sont conservées de manière sécurisée par notre base de données Supabase pendant une durée maximale de 36 mois après la fin de la demande, avant d'être anonymisées ou détruites, conformément aux préconisations de la CNIL.
+        </p>
+
+        <h2>5. Vos Droits</h2>
+        <p>
+          Conformément au RGPD, vous disposez d'un droit d'accès, de rectification, de portabilité, d'effacement de vos données personnelles, ou de limitation du traitement. Pour exercer ces droits, vous pouvez nous écrire par courriel à l'adresse de contact de l'éditeur ou soumettre une demande via notre partenaire technique.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

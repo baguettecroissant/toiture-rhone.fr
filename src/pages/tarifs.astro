@@ -1,0 +1,162 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
+import config from '../data/config.json';
+
+const title = `Tarif Pose & Réfection Toiture Rhône (69) | Prix Couverture & Zinc 2026`;
+const description = `Consultez le guide complet des tarifs de réfection de toiture zinc, ardoise, tuile canal, sarking, démoussage et zinguerie dans le Rhône (69). Devis RGE.`;
+---
+
+<Layout title={title} description={description}>
+  <SchemaMarkup
+    slot="head"
+    pageUrl={Astro.url.href}
+    pageTitle={title}
+    pageDescription={description}
+    breadcrumbItems={[
+      { label: "Accueil", href: "/" },
+      { label: "Tarifs Couverture" }
+    ]}
+  />
+
+  <Breadcrumb items={[
+    { label: "Accueil", href: "/" },
+    { label: "Tarifs Rhône (69)", href: "/tarifs/" }
+  ]} />
+
+  <section class="static-page-section" style="background-color: var(--bg);">
+    <div class="container">
+      <div class="two-column-layout">
+        
+        <!-- Main Content -->
+        <div class="static-main-content">
+          <h1>Grille des Prix de Toiture dans le Rhône — 2026</h1>
+          
+          <p class="lettrine">V</p>ous envisagez de réaliser des travaux de réfection de toiture, de nettoyage ou d'isolation de vos combles à Lyon, Villeurbanne, Vénissieux, Caluire-et-Cuire, Saint-Priest, Bron ou Villefranche-sur-Saône ? Le budget dépend du type de couverture (zinc à joint debout haussmannien, tuile mécanique, ardoise naturelle, membrane EPDM toit terrasse), de la surface et de l'état de la charpente en bois de votre logement (69).
+
+          <h2>Grille tarifaire moyenne (Fourniture &amp; Pose)</h2>
+          <p>
+            Voici les tarifs moyens TTC observés en 2026 dans le Rhône, comprenant les matériaux et l'installation complète par un couvreur certifié RGE :
+          </p>
+
+          <div class="table-scroll-wrapper" style="border: 1px solid var(--border-color); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); margin: 25px 0;">
+            <table class="data-table" style="width: 100%; margin: 0;">
+              <thead>
+                <tr>
+                  <th>Nature des Travaux</th>
+                  <th>Spécifications techniques</th>
+                  <th style="text-align: right;">Prix Moyen Posé TTC *</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="font-weight: 600;">Réfection toiture zinc à joint debout</td>
+                  <td style="color: var(--text-muted);">Dépose + zinc naturel 0.65mm + contre-liteaux</td>
+                  <td class="price" style="text-align: right;">150 – 220 € / m²</td>
+                </tr>
+                <tr>
+                  <td style="font-weight: 600;">Réfection tuiles mécaniques</td>
+                  <td style="color: var(--text-muted);">Dépose + écran HPV + repose tuiles neuves</td>
+                  <td class="price" style="text-align: right;">100 – 160 € / m²</td>
+                </tr>
+                <tr>
+                  <td style="font-weight: 600;">Réfection ardoise naturelle</td>
+                  <td style="color: var(--text-muted);">Ardoises Espagne/Angers posées au crochet</td>
+                  <td class="price" style="text-align: right;">130 – 200 € / m²</td>
+                </tr>
+                <tr>
+                  <td style="font-weight: 600;">Démoussage + Hydrofuge</td>
+                  <td style="color: var(--text-muted);">Nettoyage + algicide + traitement préventif 10 ans</td>
+                  <td class="price" style="text-align: right;">15 – 35 € / m²</td>
+                </tr>
+                <tr>
+                  <td style="font-weight: 600;">Réparation fuite ponctuelle</td>
+                  <td style="color: var(--text-muted);">Recherche de fuite + étanchéité de solins / tuiles</td>
+                  <td class="price" style="text-align: right;">350 – 1 200 €</td>
+                </tr>
+                <tr>
+                  <td style="font-weight: 600;">Zinguerie complète</td>
+                  <td style="color: var(--text-muted);">Gouttières + descentes + dauphins zinc</td>
+                  <td class="price" style="text-align: right;">55 – 100 € / ml</td>
+                </tr>
+                <tr>
+                  <td style="font-weight: 600;">Isolation Sarking (panneaux)</td>
+                  <td style="color: var(--text-muted);">Panneaux polyuréthane + pare-vapeur thermique</td>
+                  <td class="price" style="text-align: right;">90 – 170 € / m²</td>
+                </tr>
+                <tr>
+                  <td style="font-weight: 600;">Charpente (réparation)</td>
+                  <td style="color: var(--text-muted);">Traitement bois + remplacement pièces défectueuses</td>
+                  <td class="price" style="text-align: right;">70 – 130 € / m²</td>
+                </tr>
+                <tr>
+                  <td style="font-weight: 600;">Étanchéité toit terrasse (EPDM)</td>
+                  <td style="color: var(--text-muted);">Membrane EPDM collée, garantie 20 ans</td>
+                  <td class="price" style="text-align: right;">60 – 110 € / m²</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="font-size: 12.5px; color: var(--text-muted); text-align: center; margin-top: -10px;">
+            * Estimations TTC fourniture et pose comprises pour des formats standards. Les majorations liées à des contraintes ABF (Bâtiments de France) ou à des accès urbains complexes peuvent faire varier ces devis.
+          </p>
+
+          <h2>Tarifs horaires des couvreurs dans le 69</h2>
+          <p>
+            Le tarif horaire moyen pour un couvreur-zingueur qualifié dans le Rhône s'établit entre 50 € et 80 € HT. Le coût total de la main-d'œuvre dépend de la difficulté d'accès (hauteur, échafaudage sur voirie étroite) et du type de toit (le zinc nécessite un façonnage manuel précis).
+          </p>
+
+          <h2>Facteurs géographiques modifiant les devis dans le Rhône</h2>
+          <p>
+            Dans notre département 69, plusieurs spécificités influencent le montant de votre facture finale :
+          </p>
+          <ul style="margin-left: 20px; display: flex; flex-direction: column; gap: 8px; margin-top: 10px; margin-bottom: 20px;">
+            <li><strong>La logistique urbaine (Lyon / Villeurbanne) :</strong> Les chantiers en centre-ville lyonnais (immeubles anciens de 4 à 6 étages) requièrent l'utilisation de grues, de monte-matériaux et de protections de voirie temporaires, ce qui engendre des frais de logistique et d'autorisation administrative non négligeables.</li>
+            <li><strong>L'exposition au froid et à la neige (Monts du Lyonnais) :</strong> À l'ouest du département, l'altitude et le risque de surcharges de neige en hiver imposent le choix de tuiles non gélives certifiées et des crochets de fixation renforcés, augmentant le budget matériaux de 10% à 15%.</li>
+            <li><strong>Les prescriptions ABF :</strong> Dans le Vieux-Lyon (secteur sauvegardé UNESCO) ou sur les pentes de la Croix-Rousse, l'ABF exige l'utilisation exclusive du zinc naturel façonnable ou de tuiles de récupération de teintes locales, ce qui limite le recours aux tuiles mécaniques économiques.</li>
+          </ul>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="static-sidebar">
+          <div class="sidebar-widget bg-slate-gradient">
+            <h3>Demande de Devis RGE</h3>
+            <p>
+              Prêt à lancer votre projet ? Obtenez 3 devis comparatifs gratuits d'artisans couvreurs RGE proches de votre commune dans le 69.
+            </p>
+            <a href="/devis/" class="sidebar-cta-tuile">Obtenir mes devis</a>
+          </div>
+
+          <div class="sidebar-widget">
+            <h3>Exemple de Devis Zinc</h3>
+            <p style="font-size: 13px; line-height: 1.45; margin-bottom: 8px;">
+              Remplacement complet de 80 m² de toiture en zinc à joint debout sur un immeuble à Caluire-et-Cuire :
+            </p>
+            <ul style="font-size: 12px; margin: 0 0 10px 15px; color: var(--text-muted); list-style-type: square; display: flex; flex-direction: column; gap: 4px; padding: 0;">
+              <li>Dépose et évacuation zinc usagé : 1 600€</li>
+              <li>Pose support volige bois et écran HPV : 1 800€</li>
+              <li>Fourniture &amp; façonnage zinc naturel 0.65mm : 12 800€</li>
+              <li>Zinguerie et raccords de cheminée : 1 400€</li>
+              <li>TVA réduite (10% rénovation) : 1 760€</li>
+              <li><strong>Total Devis TTC : 19 360€</strong></li>
+            </ul>
+          </div>
+
+          <div class="sidebar-widget" style="border-left: 4px solid var(--secondary);">
+            <h3>Ressources Utiles</h3>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 13px; padding: 0;">
+              <li><a href="/guide-toiture-zinc/">&rarr; Guide Toiture Zinc</a></li>
+              <li><a href="/urgence-fuite/">&rarr; Dépannage fuite 24h</a></li>
+              <li><a href="/devis/">&rarr; Demande de Devis Gratuit</a></li>
+              <li><a href="/guides/prix-refection-toiture-lyon-2026-zinc-tuile-ardoise/">&rarr; Budget Réfection 69</a></li>
+              <li><a href="/guides/neige-gel-proteger-toiture-hivers-rhodaniens/">&rarr; Protéger face à la neige</a></li>
+              <li><a href="/communes/">&rarr; Couvreurs par Ville (69)</a></li>
+            </ul>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+</Layout>
