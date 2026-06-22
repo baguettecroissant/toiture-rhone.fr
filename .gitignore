@@ -26,3 +26,7 @@ pnpm-debug.log*
 # wrangler cache
 .wrangler/
 .wrangler
+
+# local portable Node binary
+node-v22.16.0-darwin-arm64/
+node.tar.gz
