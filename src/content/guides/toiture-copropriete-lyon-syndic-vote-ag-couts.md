@@ -6,7 +6,7 @@ image: "/images/guides/toiture-copropriete-lyon.png"
 imagePrompt: "Multi-story Lyon building with scaffolding, roof renovation in progress"
 ---
 
-Dans le tissu urbain lyonnais, caractérisé par des immeubles haussmanniens de la Presqu'île ou des bâtiments des canuts de la Croix-Rousse, la gestion de l'immobilier repose majoritairement sur le régime de la copropriété. Lorsque la couverture en zinc montre des signes d'usure prononcés, que le voligeage pourrit ou que des infiltrations répétées endommagent les appartements du dernier étage, la réfection globale devient indispensable. 
+Dans le tissu urbain lyonnais, caractérisé par des immeubles haussmanniens de la Presqu'île ou des bâtiments des canuts de la Croix-Rousse, la gestion de l'immobilier repose majoritairement sur le régime de la copropriété. Lorsque la [couverture en zinc](/guides/toiture-zinc-joint-debout-savoir-faire-immeubles-lyonnais/) montre des signes d'usure prononcés, que le voligeage pourrit ou que des [infiltrations répétées](/urgence-fuite/) endommagent les appartements du dernier étage, la réfection globale devient indispensable. 
 
 Cependant, engager des travaux de cette envergure sur un toit partagé exige de suivre un processus juridique et administratif strict encadré par la loi du 10 juillet 1965. Ce guide pratique détaille les étapes de décision, la répartition financière entre copropriétaires et la logistique complexe spécifique à l'agglomération lyonnaise.
 
@@ -21,7 +21,7 @@ Même si les fuites d'eau n'impactent directement que les résidents du dernier 
 
 ### Cas particulier : Les toits-terrasses à usage exclusif
 Dans les résidences plus modernes de Lyon (comme à Gerland ou Confluence), certains copropriétaires bénéficient d'un droit d'usage privatif sur un toit-terrasse. 
-*   **La structure (dalle béton et étanchéité) :** Reste une partie commune. Sa réfection ou le remplacement de la membrane d'étanchéité (EPDM ou PVC) est partagé entre tous les copropriétaires selon leurs tantièmes.
+*   **La structure (dalle béton et étanchéité) :** Reste une partie commune. Sa réfection ou le remplacement de la membrane d'étanchéité ([EPDM ou PVC](/guides/toiture-plate-lyon-confluence-gerland-epdm-pvc-bitume/)) est partagé entre tous les copropriétaires selon leurs tantièmes.
 *   **Le revêtement superficiel (dalles sur plots, carrelage, gazon synthétique) :** Est à la charge exclusive du bénéficiaire du droit d'usage. Si ce revêtement doit être déposé puis reposé pour accéder à l'étanchéité commune, la jurisprudence impute généralement les frais de dépose et repose à la copropriété, tandis que le remplacement éventuel du revêtement usé reste privatif.
 
 ---
@@ -35,7 +35,7 @@ Avant de lancer le chantier, il est fortement conseillé de faire voter le budge
 
 ### Phase 2 : Le vote des travaux et du choix de l'artisan (Article 24 ou 25)
 *   **Entretien et réfection à l'identique :** Si le projet consiste à remplacer la couverture existante sans modification des performances de manière à conserver l'immeuble en bon état, le vote requiert la **majorité simple de l'article 24**.
-*   **Amélioration énergétique (Isolation par Sarking) :** Si la réfection s'accompagne d'une isolation thermique performante (indispensable pour valoriser le DPE collectif de l'immeuble), les travaux relèvent de la **majorité absolue de l'article 25** (majorité des voix de tous les copropriétaires de l'immeuble, présents ou absents).
+*   **Amélioration énergétique (Isolation par [Sarking](/guides/isolation-sous-toiture-sarking-guide-technique-combles-69/)) :** Si la réfection s'accompagne d'une isolation thermique performante (indispensable pour valoriser le DPE collectif de l'immeuble), les travaux relèvent de la **majorité absolue de l'article 25** (majorité des voix de tous les copropriétaires de l'immeuble, présents ou absents).
     *   *Passerelle de l'article 25-1 :* Si le projet recueille au moins un tiers des voix de tous les copropriétaires, la même assemblée peut procéder immédiatement à un second vote à la majorité simple de l'article 24. Si le tiers des voix n'est pas atteint, une nouvelle AG doit être convoquée dans les trois mois pour voter à la majorité simple.
 
 ---
@@ -52,7 +52,7 @@ La réfection d'une toiture haussmannienne de 5 étages dans le centre de Lyon e
 
 ## 4. Financement et aides collectives à Lyon
 
-Le coût moyen d'une toiture en copropriété à Lyon peut rapidement dépasser les 80 000 €. Pour alléger la charge des copropriétaires, deux aides majeures sont mobilisables :
+Le [coût moyen](/tarifs/) d'une toiture en copropriété à Lyon peut rapidement dépasser les 80 000 €. Pour alléger la charge des copropriétaires, deux aides majeures sont mobilisables :
 
 1.  **MaPrimeRénov' Copropriété (ANAH) :** Cette aide nationale finance les travaux de rénovation énergétique des copropriétés (dont l'isolation de la toiture) à condition que le projet permette un gain énergétique global d'au moins **35 %** après travaux. L'aide est versée directement au syndicat des copropriétaires et répartie sur les charges de chacun.
 2.  **Éco-Rénov Copropriété de la Métropole de Lyon :** Cette subvention locale vient en complément de MaPrimeRénov' pour soutenir les projets ambitieux. La Métropole finance jusqu'à 30 % du montant des travaux d'isolation thermique de la toiture, avec des bonus individuels pour les copropriétaires aux revenus modestes.

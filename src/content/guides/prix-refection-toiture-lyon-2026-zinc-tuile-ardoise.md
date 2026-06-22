@@ -6,9 +6,9 @@ image: "/images/guides/prix-refection-toiture-lyon.png"
 imagePrompt: "Lyon rooftops panorama with price zones overlay, warm industrial tones"
 ---
 
-Refaire sa toiture dans le Rhône est un investissement structurel majeur pour protéger et valoriser votre habitation ou votre copropriété. En 2026, avec l'évolution des réglementations thermiques de la RE2020, la hausse des prix des matières premières et les exigences rigoureuses du bâti lyonnais (comme le zinc haussmannien en Presqu'île ou les tuiles canal de la Croix-Rousse), estimer précisément son budget exige de prendre en compte de nombreux facteurs techniques. 
+Refaire sa toiture dans le Rhône est un investissement structurel majeur pour protéger et valoriser votre habitation ou votre copropriété. En 2026, avec l'évolution des réglementations thermiques de la RE2020, la hausse des prix des matières premières et les exigences rigoureuses du bâti lyonnais (comme le [zinc haussmannien en Presqu'île](/guides/toiture-zinc-joint-debout-savoir-faire-immeubles-lyonnais/) ou les tuiles canal de la Croix-Rousse), estimer précisément son budget exige de prendre en compte de nombreux facteurs techniques. 
 
-Ce guide complet détaille les tarifs moyens pratiqués par les couvreurs-zingueurs RGE dans le 69, les coûts annexes à anticiper, et les aides financières locales pour optimiser votre plan de financement.
+Ce guide complet détaille les [tarifs moyens](/tarifs/) pratiqués par les couvreurs-zingueurs RGE dans le 69, les coûts annexes à anticiper, et les aides financières locales pour optimiser votre plan de financement.
 
 ---
 
@@ -52,7 +52,7 @@ Le remplacement de la couverture s'accompagne systématiquement de la réfection
 
 ## Étude de cas détaillée : Rénovation de toiture à Villeurbanne (100 m²)
 
-Voici une simulation réelle pour la réfection d'une toiture de maison de ville de 100 m² à Villeurbanne en tuiles terre cuite avec isolation par l'extérieur (Sarking) en 2026 :
+Voici une simulation réelle pour la réfection d'une toiture de maison de ville de 100 m² à Villeurbanne en tuiles terre cuite avec [isolation par l'extérieur (Sarking)](/guides/isolation-sous-toiture-sarking-guide-technique-combles-69/) en 2026 :
 
 | Poste de dépense | Description technique | Prix estimé TTC |
 | :--- | :--- | :---: |
@@ -71,8 +71,8 @@ Voici une simulation réelle pour la réfection d'une toiture de maison de ville
 Rénover votre toiture tout en améliorant son isolation thermique permet de réduire considérablement la facture finale grâce aux aides de l'État et de la collectivité territoriale :
 
 1.  **Éco-Rénov de la Métropole de Lyon :** Un dispositif d'aide locale très incitatif destiné aux propriétaires (occupants ou bailleurs) et aux copropriétés réalisant des travaux de rénovation énergétique globale. L'aide peut couvrir de 20% à 40% du coût de l'isolation de votre toiture selon vos ressources.
-2.  **MaPrimeRénov' (ANAH) :** Distribuée sous conditions de ressources pour les résidences principales de plus de 15 ans. Le montant dépend de l'efficacité énergétique gagnée (DPE) et du type d'isolation posée (sarking ou rampants).
+2.  **MaPrimeRénov' (ANAH) :** Distribuée sous conditions de ressources pour les résidences principales de plus de 15 ans. Le montant dépend de l'efficacité énergétique gagnée (DPE) et du type d'isolation posée ([sarking](/guides/isolation-sous-toiture-sarking-guide-technique-combles-69/) ou rampants).
 3.  **Les Certificats d'Économie d'Énergie (CEE) :** Primes versées par les fournisseurs d'énergie pour la mise en place d'isolants thermiques performants (résistance thermique R minimale de 6,0 m².K/W en rampants et 7,0 m².K/W en combles perdus).
 4.  **TVA à taux réduit (5,5%) :** Directement appliquée par l'artisan RGE sur la facture de vos travaux d'isolation thermique (matériel et pose) ainsi que sur les travaux induits (dépose et repose de la couverture).
 
-**Important :** Pour être éligible à ces aides, vos travaux doivent obligatoirement être réalisés par un professionnel certifié **RGE** (Reconnu Garant de l'Environnement) actif dans le Rhône, et le devis doit être signé *avant* le début du chantier.
+**Important :** Pour être éligible à ces aides, vos travaux doivent obligatoirement être réalisés par un professionnel certifié **[RGE](/guides/comment-choisir-couvreur-rhone-assurance-decennale-qualibat-devis/)** (Reconnu Garant de l'Environnement) actif dans le Rhône, et le devis doit être signé *avant* le début du chantier.

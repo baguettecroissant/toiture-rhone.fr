@@ -8,7 +8,7 @@ imagePrompt: "Close-up of zinc standing seam roof being crafted, artisan tools, 
 
 Le zinc est indissociable du paysage lyonnais. Lorsque l'on observe la ville depuis la colline de Fourvière, c'est une mer de toits gris-bleu aux reflets métalliques qui se déploie. De la Presqu'île (Lyon 2e) aux pentes de la Croix-Rousse (Lyon 1er), près de 40 % des immeubles anciens — principalement de type haussmannien ou canut — sont recouverts de zinc. 
 
-Matériau noble, léger et durable, sa mise en œuvre ne souffre aucune approximation. La réhabilitation ou la pose d'une toiture en zinc à joint debout exige des compétences de compagnonnage spécifiques en zinguerie et le respect strict du **DTU 40.41**. Ce guide technique explore les secrets de ce savoir-faire artisanal indispensable au patrimoine rhodanien.
+Matériau noble, léger et durable, sa mise en œuvre ne souffre aucune approximation. La réhabilitation ou la pose d'une [toiture en zinc à joint debout](/guide-toiture-zinc/) exige des compétences de compagnonnage spécifiques en zinguerie et le respect strict du **DTU 40.41**. Ce guide technique explore les secrets de ce savoir-faire artisanal indispensable au patrimoine rhodanien.
 
 ---
 
@@ -57,7 +57,7 @@ Une lame d'air continue d'au moins **20 mm d'épaisseur** doit être ménagée s
 
 ## Règles d'urbanisme et Bâtiments de France à Lyon
 
-La majeure partie de l'hypercentre de Lyon (Vieux-Lyon, Croix-Rousse, Presqu'île) est classée au patrimoine mondial de l'UNESCO. À ce titre, tout projet de rénovation de toiture est soumis à l'examen de l'**Architecte des Bâtiments de France (ABF)**.
+La majeure partie de l'hypercentre de Lyon (Vieux-Lyon, Croix-Rousse, Presqu'île) est classée au patrimoine mondial de l'UNESCO. À ce titre, tout projet de [rénovation de toiture](/guides/prix-refection-toiture-lyon-2026-zinc-tuile-ardoise/) est soumis à l'examen de l'**Architecte des Bâtiments de France (ABF)**.
 
 *   **Le choix de l'aspect de surface :** Les ABF refusent généralement les zincs pré-patinés foncés ou colorés artificiellement dans les secteurs historiques. Le **zinc naturel brut** est privilégié car il acquiert sa patine gris-bleu clair unique en quelques mois sous l'action combinée de l'eau de pluie et de l'air urbain.
 *   **L'interdiction des matériaux modernes :** Le bac acier ou l'aluminium laqué imitant le zinc sont formellement proscrits. Les lucarnes, œils-de-bœuf et habillages de cheminée doivent être réalisés en zinc ou en cuivre selon les techniques traditionnelles.

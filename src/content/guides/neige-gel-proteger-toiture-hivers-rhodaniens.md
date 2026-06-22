@@ -8,7 +8,7 @@ imagePrompt: "Snow-covered Lyon rooftop with ice damage, icicles on gutters"
 
 Le département du Rhône présente une topographie contrastée qui engendre des contraintes climatiques hivernales très diverses. Alors que la plaine du Rhône et l'agglomération lyonnaise connaissent des hivers modérés mais marqués par une forte humidité brumeuse propice aux gelées nocturnes, les secteurs d'altitude comme les **Monts du Lyonnais** (Saint-Martin-en-Haut, Larajasse, Tarare) et le **Haut-Beaujolais** dépassent régulièrement les 800 mètres d'altitude. Dans ces zones de moyenne montagne, les chutes de neige lourde, le gel prolongé et les chocs thermiques intenses soumettent les toitures à rude épreuve.
 
-Anticiper ces agressions climatiques permet de prémunir les charpentes en bois, les matériaux de couverture et les systèmes de zinguerie contre des désordres structurels graves. Ce guide technique détaille les physiques en jeu et les solutions mécaniques pour sécuriser votre toiture face aux hivers rhodaniens.
+Anticiper ces agressions climatiques permet de prémunir les charpentes en bois, les [matériaux de couverture](/tarifs/) et les systèmes de zinguerie contre des désordres structurels graves. Ce guide technique détaille les physiques en jeu et les solutions mécaniques pour sécuriser votre toiture face aux hivers rhodaniens.
 
 ---
 
@@ -35,7 +35,7 @@ Les barrières de glace se forment principalement sur les toitures des habitatio
 4.  **L'infiltration :** L'eau de fonte continue de descendre mais se retrouve bloquée par cette digue. Elle remonte par capillarité sous les tuiles ou les ardoises non étanches et s'infiltre directement dans l'isolant, les plafonds et les plaques de plâtre intérieures.
 
 ### La solution :
-L'installation d'une **isolation par l'extérieur de type Sarking** (qui crée un bouclier thermique continu sans ponts thermiques) associée à un écran de sous-toiture HPV étanche à l'eau supprime le réchauffement superficiel du toit et élimine définitivement la formation des barrières de glace.
+L'installation d'une **[isolation par l'extérieur de type Sarking](/guides/isolation-sous-toiture-sarking-guide-technique-combles-69/)** (qui crée un bouclier thermique continu sans ponts thermiques) associée à un écran de sous-toiture HPV étanche à l'eau supprime le réchauffement superficiel du toit et élimine définitivement la formation des barrières de glace.
 
 ---
 
@@ -59,4 +59,4 @@ Le gel peut détruire physiquement les tuiles de mauvaise qualité par le phéno
 
 *   **La porosité en cause :** Une tuile ancienne ou mal cuite présente un taux d'absorption d'eau élevé. Lorsque les températures descendent sous les 0°C pendant plusieurs jours (comme c'est fréquemment le cas dans les vallées de l'Azergues ou de la Brévenne), l'eau gelée fait éclater la structure interne de l'argile. La tuile s'effrite en feuillets (délitement) ou se brise en morceaux.
 *   **La norme NF Non-Gélif :** Lors de travaux dans le Rhône, exigez des tuiles en terre cuite certifiées conformes à la norme **NF EN 539-2**, qui garantit une résistance minimale à 150 cycles de gel/dégel successifs.
-*   **Le traitement préventif :** Sur une couverture existante saine mais vieillissante, l'application d'un **hydrofuge perlant** imperméabilise la surface, empêchant l'eau de saturer l'argile et éliminant ainsi le risque d'éclatement par le gel.
+*   **Le traitement préventif :** Sur une couverture existante saine mais vieillissante, l'application d'un **[hydrofuge perlant](/guides/demoussage-toiture-rhone-quand-comment-prix/)** imperméabilise la surface, empêchant l'eau de saturer l'argile et éliminant ainsi le risque d'éclatement par le gel.

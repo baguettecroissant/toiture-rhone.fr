@@ -6,9 +6,9 @@ image: "/images/guides/sarking-isolation.png"
 imagePrompt: "Exploded view diagram of sarking layers on traditional roof structure"
 ---
 
-Dans le cadre d'une rénovation de toiture dans le Rhône, la question de l'isolation thermique est centrale. La toiture représente en effet jusqu'à **30 % des déperditions de chaleur** d'une maison non isolée. Si l'isolation traditionnelle par l'intérieur (entre chevrons) est courante, elle présente des limites majeures : perte de surface habitable sous combles, obligation de masquer la charpente, et présence de ponts thermiques structurels. 
+Dans le cadre d'une [rénovation de toiture dans le Rhône](/guides/prix-refection-toiture-lyon-2026-zinc-tuile-ardoise/), la question de l'isolation thermique est centrale. La toiture représente en effet jusqu'à **30 % des déperditions de chaleur** d'une maison non isolée. Si l'isolation traditionnelle par l'intérieur (entre chevrons) est courante, elle présente des limites majeures : perte de surface habitable sous combles, obligation de masquer la charpente, et présence de ponts thermiques structurels. 
 
-L'isolation thermique par l'extérieur (ITE) de la toiture, appelée technique du **sarking**, s'impose aujourd'hui comme la solution la plus performante pour isoler des combles habitables. Adaptée au climat continental du 69 — marqué par des hivers froids et des vagues de chaleur estivales intenses —, elle allie performance thermique exceptionnelle et mise en valeur esthétique du logement. Ce guide détaille le fonctionnement, les étapes de pose et les aides disponibles pour ce procédé haut de gamme.
+L'isolation thermique par l'extérieur (ITE) de la toiture, appelée technique du **sarking**, s'impose aujourd'hui comme la solution la plus performante pour isoler des combles habitables. Adaptée au [climat continental du 69](/guides/neige-gel-proteger-toiture-hivers-rhodaniens/) — marqué par des hivers froids et des vagues de chaleur estivales intenses —, elle allie performance thermique exceptionnelle et mise en valeur esthétique du logement. Ce guide détaille le fonctionnement, les étapes de pose et les aides disponibles pour ce procédé haut de gamme.
 
 ---
 
@@ -50,7 +50,7 @@ La pose du sarking est une opération méthodique qui s'effectue en hauteur, exi
 3.  **La couche isolante :** Les panneaux rigides rainurés bouvetés sont posés de façon jointive, généralement en deux couches croisées pour rompre tout raccord d'air.
 4.  **L'écran de sous-toiture HPV :** Déroulé sur l'isolant, il protège des infiltrations d'eau accidentelles et de la neige poudreuse tout en permettant à l'isolant d'évacuer d'éventuelles traces d'humidité interne.
 5.  **Le contre-liteonnage et vissage structurel :** Des lambourdes (contre-lattes) sont posées dans l'alignement des chevrons. Elles sont fixées en traversant l'isolant à l'aide de vis double filetage en acier carbone. Ces vis sont enfoncées selon un angle précis (généralement 60° pour résister aux efforts de glissement de la toiture et 90° pour résister à la pression du vent).
-6.  **Le liteonnage et la couverture :** Les liteaux horizontaux sont cloués pour recevoir les tuiles, ardoises ou bacs de zinc.
+6.  **Le liteonnage et la couverture :** Les liteaux horizontaux sont cloués pour recevoir les tuiles, ardoises ou [bacs de zinc](/guides/toiture-zinc-joint-debout-savoir-faire-immeubles-lyonnais/).
 
 ---
 
@@ -62,11 +62,11 @@ Le sarking modifie l'aspect extérieur du bâtiment en rehaussant la toiture de 
 
 ---
 
-## 4. Coûts et aides financières dans le Rhône (69) en 2026
+## 4. [Coûts et aides financières](/tarifs/) dans le Rhône (69) en 2026
 
 Le sarking est une technique de pointe qui requiert un investissement de **120 à 220 € / m² TTC** (uniquement pour la partie isolation, hors pose de la couverture finale). Bien que plus onéreuse qu'une isolation classique, elle est fortement amortie par des économies de chauffage à vie et par des subventions publiques :
 
 *   **MaPrimeRénov' (ANAH) :** Pour les logements de plus de 15 ans. Le montant dépend de la catégorie de revenus du foyer fiscal, pouvant aller jusqu'à 75 €/m² pour les revenus très modestes.
 *   **La Prime Énergie (CEE) :** Versée par les fournisseurs d'énergie, elle exige une résistance thermique minimale du sarking de **$R \ge 6,0 \text{ m}^2.\text{K/W}$**.
 *   **Éco-Rénov de la Métropole de Lyon :** Si les travaux d'isolation permettent de réduire significativement la consommation énergétique globale du bâtiment, la Métropole de Lyon attribue une prime locale cumulable avec les aides de l'État.
-*   **TVA réduite à 5,5 % :** Appliquée directement sur la fourniture de l'isolant et la main-d'œuvre de pose par l'entreprise qualifiée RGE.
+*   **TVA réduite à 5,5 % :** Appliquée directement sur la fourniture de l'isolant et la main-d'œuvre de pose par l'entreprise qualifiée [RGE](/guides/comment-choisir-couvreur-rhone-assurance-decennale-qualibat-devis/).
