@@ -21,8 +21,8 @@ const local = generateCommuneContent(commune, pageType);
 const prices = getDynamicPrices(commune);
 const nearby = getSmartNearbyCommunes(commune.slug, communes, 5, 2);
 
-const title = `Travaux de Toiture à ${commune.nom} (${commune.codePostal}) — Artisan Couvreur Rhône`;
-const description = `${local.introParagraph} Devis gratuits de couvreurs-zingueurs RGE dans le Rhône. Tarifs de toiture adaptés à ${commune.nom}.`;
+const title = local.title;
+const description = local.introParagraph;
 
 const breadcrumbItems = [
   { label: "Accueil", href: "/" },

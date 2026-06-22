@@ -21,8 +21,8 @@ const local = generateCommuneContent(commune, pageType);
 const prices = getDynamicPrices(commune);
 const nearby = getSmartNearbyCommunes(commune.slug, communes, 5, 2);
 
-const title = `Nettoyage & Démoussage de Toiture à ${commune.nom} (${commune.codePostal}) — Devis Gratuit`;
-const description = `${local.introParagraph} Nettoyage de tuiles, traitement fongicide et hydrofuge dans le Rhône. Demandez vos tarifs à ${commune.nom}.`;
+const title = local.title;
+const description = local.introParagraph;
 
 const breadcrumbItems = [
   { label: "Accueil", href: "/" },

@@ -21,8 +21,8 @@ const local = generateCommuneContent(commune, pageType);
 const prices = getDynamicPrices(commune);
 const nearby = getSmartNearbyCommunes(commune.slug, communes, 5, 2);
 
-const title = `Trouver un Couvreur RGE à ${commune.nom} (${commune.codePostal}) — Devis Gratuits`;
-const description = `${local.introParagraph} Devis comparatifs d'artisans couvreurs qualifiés RGE et assurés décennale dans le Rhône. Diagnostic toiture gratuit à ${commune.nom}.`;
+const title = local.title;
+const description = local.introParagraph;
 
 const breadcrumbItems = [
   { label: "Accueil", href: "/" },
